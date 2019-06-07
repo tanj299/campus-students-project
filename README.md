@@ -4,7 +4,7 @@
 
 Group Members
 ----
-* Javier Minchalal
+* Javier Minchala
 * Jayson Tan
 * Tommi Tsuruga
 * Topgyal Gurung
