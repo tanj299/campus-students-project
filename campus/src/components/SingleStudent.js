@@ -19,6 +19,7 @@ class SingleStudent extends Component {
 
 		return (
 
+			
 
 		)
 

@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-class NotFound404 extends Component {
+function NotFound404 () {
 
-	constructor (props) {
+	return (
 
-		super(props);
+		<div className = "page_error m_404">
+			<h1>404 Page Not Found.</h1>
+			<div>
+				Are you lost?
+				<br />
+				<br />
+				<Link to = "/">Go Back Home</Link>
+				
+			</div>
+		</div>
 
-		this.state = {
-
-
-
-		}
-
-	}
-
-	render () {
-
-		return (
-
-
-		)
-
-	}
+	);
 
 }
 
