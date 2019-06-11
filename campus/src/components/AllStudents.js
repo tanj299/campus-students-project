@@ -26,7 +26,6 @@ class AllStudents extends Component {
 			displayErrorMessage: false
 
 		}
-
 	}
 
 	// componentDidMount () {
