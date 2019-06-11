@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 // import axios from 'axios';
 
+import { Link } from 'react-router-dom';
+
 function CampusInfo ({ campusData }) {
 	return (
 
@@ -35,10 +37,12 @@ class CampusList extends Component {
 
 	render () {
 
-		let campus_list = this.state.data.map( (s, i) => {
+		let campus_list = this.props.campusList.map( (s, i) => {
 			return (
-				<li key = { i } >
-					<CampusInfo campusData = { s } />
+				<li key = { s.id } >
+                    <Link to = { '/campus/' + s.id}>
+                        <CampusInfo campusData = { s } />
+                    </Link>
 				</li>
 			);
         });

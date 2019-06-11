@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 function StudentInfo ({ studentData }) {
 	return (
@@ -33,10 +34,12 @@ class StudentList extends Component {
 
 	render () {
 
-		let student_list = this.state.data.map( (s, i) => {
+		let student_list = this.props.studentList.map( (s, i) => {
 			return (
-				<li key = { i } >
-					<StudentInfo studentData = { s } />
+				<li key = { s.id } >
+                    <Link to = { '/student/' + s.id }>
+					    <StudentInfo studentData = { s } />
+                    </Link>
 				</li>
 			);
         });
