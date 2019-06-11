@@ -1,9 +1,10 @@
 
 const router=require('express').Router();
 
-const campuses=[{name:"Hunter College",
+//id just added to  test for now
+const campuses=[{id:1,name:"Hunter College",  
 address: "695 Park Ave, New York, NY 10065"},
-{name: "Parsons School of Design",
+{id:2,name: "Parsons School of Design",
 address: "66 5th Ave, New York, NY 10011"}
 ]
 
@@ -15,7 +16,7 @@ router.get("/",(req,res,next)=>{
 
 //routes to serve single campus
 router.get("/:id",(req,res,next)=>{
-    res.json("single campus");
+    res.json(`${req.params.id}`); // instead of id ??
 })
 
 //route to add a new campus

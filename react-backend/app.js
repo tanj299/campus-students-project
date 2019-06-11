@@ -11,9 +11,9 @@ const campusRouter=require("./routes/campuses")
 
 const PORT=3000;
 
-//app.use('/'), apiRouter);
+app.use('/', apiRouter);
 app.use('/students',studentRouter);
-app.use('/campuses/',campusRouter);
+app.use('/campuses',campusRouter);
 
 
 app.listen(PORT, () => {

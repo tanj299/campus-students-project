@@ -10,9 +10,10 @@ const campusesRouter=require("./campuses");
 // const campusesRouter=require("./singleCampus");
 
 /* GET home page. */
- router.get('/', function(req, res, next) {
- res.render('index', { title: 'Express' });
-});
+router.get('/',function(req,res){
+    res.json("home");
+})
+
 
 router.use("/students",studentRouter);
 router.use("/campuses",campusesRouter);
