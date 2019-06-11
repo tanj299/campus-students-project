@@ -1,4 +1,4 @@
- // actions/index.js
+// actions/index.js
 // Namespace actions
 
 //export const INCREMENT = 'counter/INCREMENT';
