@@ -9,7 +9,7 @@ app.listen(3001, () => {
   console.log("Hello world!!!");
 })
 
-
+module.exports = app;
 
 // var createError = require('http-errors');
 // var express = require('express');
@@ -51,4 +51,4 @@ app.listen(3001, () => {
 //   res.render('error');
 // });
 
-// module.exports = app;
+
