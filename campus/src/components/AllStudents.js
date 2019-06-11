@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import StudentList from './partials/StudentList';
 import {Link} from 'react-router-dom';
 
@@ -47,6 +47,12 @@ class AllStudents extends Component {
 	// 		});
 
 	// }
+	
+	async componentDidMount() {
+		const {data} = await axios.get('http://localhost:3001/students')
+		this.setState({data})
+		
+	}
 
 	render () {
 
