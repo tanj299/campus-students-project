@@ -1,5 +1,7 @@
 
 const router = require("express").Router();
+
+//dummy data
 const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
 //route to serve all students

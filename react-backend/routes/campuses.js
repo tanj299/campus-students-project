@@ -1,9 +1,16 @@
 
 const router=require('express').Router();
 
+const campuses=[{name:"Hunter College",
+address: "695 Park Ave, New York, NY 10065"},
+{name: "Parsons School of Design",
+address: "66 5th Ave, New York, NY 10011"}
+]
+
 //route to serve all campuses
 router.get("/",(req,res,next)=>{
-    res.json("ALL CAMPUSES");
+    res.json(campuses);
+    
 })
 
 //routes to serve single campus

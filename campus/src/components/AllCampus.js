@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+ import axios from 'axios';
 
 import CampusList from './partials/CampusList';
 
@@ -11,19 +11,22 @@ class AllCampus extends Component {
 
 		this.state = {
 
-			data: [{
+			data: [/*{
 				name: "Hunter College",
 				address: "695 Park Ave, New York, NY 10065"
 			},{
 				name: "Parsons School of Design",
 				address: "66 5th Ave, New York, NY 10011"
-			}]
+			}*/]
 
 		}
 
 	}
 
-	// componentDidMount () {
+	 async componentDidMount () {
+	 	const {data}=await axios.get('http://localhost:3001/campus')
+	 	this.setState({data})
+	 	}
 
 	// 	axios.get("/campuses/all")
 	// 		.then( (response) => {

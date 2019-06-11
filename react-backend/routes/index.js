@@ -2,6 +2,7 @@
 // var router = express.Router();
 
 const router=require("express").Router();
+
 const studentRouter=require("./students");
 const campusesRouter=require("./campuses");
 
@@ -14,7 +15,7 @@ const campusesRouter=require("./campuses");
 });
 
 router.use("/students",studentRouter);
-router.use("/campus",campusesRouter);
+router.use("/campuses",campusesRouter);
 
 // router.use("/singleStudent",studentRouter);
 // router.use("/singleCampus",campusRouter);
