@@ -21,9 +21,9 @@ const removeStudent = () => {
 // ************************************ THUNK CREATORS ************************************
 export const fetchStudentThunk = (id) => (dispatch) => {
     return axios 
-        .get() //  
+        .get("http://localhost:5000/api/students") //  
         .then(response => response.data)
-        .then()
+        .then(data => dispatch(fetchStudent(data[0])))
         .catch(err => console.log(err));
 } 
 

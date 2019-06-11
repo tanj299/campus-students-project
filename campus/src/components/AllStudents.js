@@ -22,7 +22,7 @@ class AllStudents extends Component {
 
 		this.state = {
 
-			data: rawData,
+			data: [],
 			displayErrorMessage: false
 
 		}
