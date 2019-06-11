@@ -1,2 +1,2 @@
-export { default as currentStudent } from '../store/utilities/Student.js';
-export { default as currentCampus } from '../store/utilities/Campus.js'
+export { default as currentStudent } from '../components/store/utilities/Student';
+// export { default as currentCampus } from '../components/store/utilities/Campus.js'

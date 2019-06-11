@@ -69,7 +69,7 @@ class SingleStudent extends Component {
 }
 
 function mapState(state)  {
-	return  { data:  }
+	// return  { data:  }
 }
 export default SingleStudent;
 

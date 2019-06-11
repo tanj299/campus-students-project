@@ -13,7 +13,6 @@ import AllCampus from './components/AllCampus';
 
 import SingleStudent from './components/SingleStudent';
 import AllStudents from './components/AllStudents';
-import SingleStudent from './components/SingleStudent';
 
 import AddCampusForm from './components/forms/AddCampusForm';
 import EditCampus from './components/forms/EditCampus';
