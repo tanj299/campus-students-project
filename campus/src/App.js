@@ -9,6 +9,7 @@ import Footer from './components/partials/Footer';
 import Home from './components/Home';
 import AllCampus from './components/AllCampus';
 import AllStudents from './components/AllStudents';
+import SingleStudent from './components/SingleStudent';
 import NotFound404 from './components/NotFound404';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 
         <Switch>
           <Route path = "/" exact component = { Home } />
-          <Route path = "/students" component = { AllStudents } />
+          <Route path = "/students" component = { SingleStudent } />
           <Route path = "/campuses" component = { AllCampus } />
           <Route component = { NotFound404 } />
         </Switch>
