@@ -32,4 +32,4 @@ const submitStudnet = () => {
 }
 
 //***************************** THUNK CREATORS ****************************
-export const fetchStudentThunk = (id) =>
+export const fetchStudentThunk = (id) => 

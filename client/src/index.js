@@ -7,7 +7,6 @@ import * as serviceWorker from './serviceWorker';
 // import {Provider} allows passing of props to other components
 // if passed through the provider, any component can read from other component
 // and access the store, in which te store is passed through and is accessed by components?
-import { Provider } from 'react-redux';
 
 ReactDOM.render(
     <Provider store={store}>
