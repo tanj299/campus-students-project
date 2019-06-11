@@ -11,22 +11,25 @@ const EDIT_STUDENT = "EDIT_STUDENT";
 
 // Fetch player object from API 
 // @return: the payload which is all the info of the student
-const fetchPlayer = (student) => {
+const fetchStudent = (student) => {
     return {
         type: FETCH_STUDENT, 
         payload: student
     }
 }
 
-const removePlayer = () => {
+const removeStudent = () => {
     return {
-        type: REMOVE_STUDENT;
+        type: REMOVE_STUDENT
     }
 }
 
 const submitStudnet = () => {
     return {
-        type: SUBMIT_STUDENT;
+        type: SUBMIT_STUDENT
         
     }
 }
+
+//***************************** THUNK CREATORS ****************************
+export const fetchStudentThunk = (id) =>
