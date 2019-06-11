@@ -1,7 +1,19 @@
-import React, { Component } from 'react';
 import { fetchStudentThunk } from './store/utilities/Student';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import React, { Component, Fragment } from 'react';
+// import axios from 'axios';
+
+let rawData = [
+
+	{ 
+		id: 1, 
+		firstName: 'John', 
+		lastName: 'Smith', 
+		email: 'jsmith@gmail.com',
+		gpa: '3.5'
+	}
+];
 
 class SingleStudent extends Component {
 
@@ -9,29 +21,47 @@ class SingleStudent extends Component {
 
 		super(props);
 
-		// this.state = {
-			
-		// 	data: []
-		// }
+		this.state = {
+
+			data: undefined,
+			campus: props.campusInfo
+
+		}
 
 	}
 
-	// async componentDidMount() {
-	// 	try {
+	componentDidMount () {
+
+		for (let i = 0; i < rawData.length; i++) {
 			
-	// 		const {data} = await axios.get('http://localhost:5000/api/students')
-	// 		this.setState({data})
-	// 	} catch (error) {
-	// 	console.error(error)	
-	// 	}
-	// }
+			if (rawData[i].id == this.props.match.params.id) {
+				this.setState({
+					data: rawData[i]
+				});
+
+				return;
+			}
+		}
+	}
+
 	render () {
 		const student = this.state.data[0] || 'NO student'
 
 		return (
-			<h1>{student.firstName}</h1>
-			
+			<div>
+				{ (this.state.data != null) ? (
+					<Fragment>
+						<h1>{this.state.data.firstName + " " + this.state.data.lastName}</h1>
 
+						<p className = "email">{this.state.data.email}</p>
+
+						<p className = "gpa">{this.state.data.gpa}</p>
+					</Fragment>) :
+					(
+						<p className = "error">There was an error.</p>
+					)
+				}
+			</div>
 		)
 
 	}
