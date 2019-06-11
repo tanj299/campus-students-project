@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import StudentList from './partials/StudentList';
+import {Link} from 'react-router-dom';
+
+let rawData = [
+
+	{ 
+		id: 1, 
+		firstName: 'John', 
+		lastName: 'Smith', 
+		email: 'jsmith@gmail.com',
+		gpa: '3.5'
+	}
+];
 
 class AllStudents extends Component {
 
@@ -10,11 +22,7 @@ class AllStudents extends Component {
 
 		this.state = {
 
-			data: [/*{
-				firstName: "John",
-				lastName: "Smith",
-				email: "john_smith98@gmail.com"
-			}*/],
+			data: rawData,
 			displayErrorMessage: false
 
 		}
@@ -45,6 +53,7 @@ class AllStudents extends Component {
 		return (
 
 			<div className = "all_students">
+				<Link to = "/add/student">Add Student</Link>
 				<StudentList studentList = { this.state.data } />
 			</div>
 		)
