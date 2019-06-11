@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import StudentList from './partials/StudentList';
 
 class AllStudents extends Component {
@@ -39,6 +39,12 @@ class AllStudents extends Component {
 	// 		});
 
 	// }
+	
+	async componentDidMount() {
+		const {data} = await axios.get('http://localhost:3001/students')
+		this.setState({data})
+		
+	}
 
 	render () {
 

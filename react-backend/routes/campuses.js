@@ -1,3 +1,4 @@
+
 const router=require('express').Router();
 
 //route to serve all campuses
@@ -12,13 +13,17 @@ router.get("/:id",(req,res,next)=>{
 
 //route to add a new campus
  router.post("/", (req,res)=>{
-    
+    res.json("add a student");
  });
 
 //routes to edit campus ??
- router.put;
+ router.put("/:id",(req,res)=>{
+    res.json("edit campus")
+ });
 
 //route to remove a campus
-router.delete;
+router.delete("/:id", (req,res)=>{
+    res.json("remove a campus")
+});
 
 module.exports=router;
