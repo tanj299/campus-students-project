@@ -1,25 +1,20 @@
 // var express = require('express');
 // var router = express.Router();
-
 const router=require("express").Router();
 
-const studentRouter=require("./students");
-const campusesRouter=require("./campuses");
-
-// const studentRouter=require("./singleStudent");
-// const campusesRouter=require("./singleCampus");
-
 /* GET home page. */
-router.get('/',function(req,res){
-    res.json("home");
+//when GET request made to home page
+router.get('/',function(req,res,next){
+    //res.render('index',{title:'Express'});
+    res.send("Home");
+    
+// if clicked students redirect to student route
+   // res.redirect('./students');
 })
 
-
-router.use("/students",studentRouter);
-router.use("/campuses",campusesRouter);
-
-// router.use("/singleStudent",studentRouter);
-// router.use("/singleCampus",campusRouter);
-
+//Add page route
+// router.get('/about',function(req,res){
+//    res.send('About Us');
+// })
 
 module.exports = router;

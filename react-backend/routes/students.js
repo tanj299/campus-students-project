@@ -1,5 +1,8 @@
+// const express=require('express');
+// const router=express.Router();
 
 const router = require("express").Router();
+
 
 //dummy data
 const students = [{id:1,firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]

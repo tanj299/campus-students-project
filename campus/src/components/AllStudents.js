@@ -42,10 +42,8 @@ class AllStudents extends Component {
 	
 	async componentDidMount() {
 		const {data} = await axios.get('http://localhost:3001/students')
-		this.setState({data})
-		
+		this.setState({data})		
 	}
-
 	render () {
 
 		return (
