@@ -9,7 +9,8 @@ class AddCampusForm extends Component {
 
 		this.state = {
 
-			currentName: "",
+			name: "",
+			address: ""
 
 		}
 
@@ -19,7 +20,7 @@ class AddCampusForm extends Component {
 
 	handleNameInput (e) {
 		this.setState({
-			currentName: e.target.value
+			[e.target.name]: e.target.value
 		});
 	}
 
@@ -42,10 +43,16 @@ class AddCampusForm extends Component {
 		return (
 			
 			<div>
-				<label className = "add_item_label" htmlFor = "campus_name">
+				<label className = "add_item_label" htmlFor = "name">
 					Campus Name
 				</label>
-				<input type = "text" name = "campus_name" onChange = { this.handleInputChange } />
+				<input type = "text" name = "name" onChange = { this.handleInputChange } />
+
+				<label className = "add_item_label" htmlFor = "address">
+					Campus Address
+				</label>
+				<input type = "text" name = "address" onChange = { this.handleInputChange } />
+
 
 				<input type = "submit" onClick = { this.submitName } value = "Add+" />
 			</div>

@@ -10,7 +10,8 @@ class AddStudentForm extends Component {
 		this.state = {
 
 			firstName: "",
-			lastName: ""
+			lastName: "",
+			email: ""
 
 		}
 
@@ -52,6 +53,11 @@ class AddStudentForm extends Component {
 					Last Name
 				</label>
 				<input type = "text" name = "lastName" onChange = { this.handleInputChange } />
+
+				<label className = "add_item_label" htmlFor = "name">
+					Email
+				</label>
+				<input type = "text" name = "email" onChange = { this.handleInputChange } />
 
 				<input type = "submit" onClick = { this.submitName } value = "Add+" />
 			</div>
