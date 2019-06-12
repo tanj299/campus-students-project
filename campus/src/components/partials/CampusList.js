@@ -7,7 +7,7 @@ function CampusInfo ({ campusData }) {
 	return (
 
 		<Fragment>
-			<h3 className = "campus_name">
+			<h3 className = "name">
 				{ campusData.name }
 			</h3>
 
@@ -39,16 +39,19 @@ class CampusList extends Component {
 
 		let campus_list = this.props.campusList.map( (s, i) => {
 			return (
-				<li key = { s.id } >
+				<li className = "item_sm" key = { s.id } >
                     <Link to = { '/campus/' + s.id}>
                         <CampusInfo campusData = { s } />
                     </Link>
+                        <br/>
+                    <Link to = { '/campus/' + s.id } className = "btn_link">View Campus</Link>
+					<Link to = { '/edit/campus/' + s.id } className = "edit">Edit</Link>
 				</li>
 			);
         });
 
         let toRender = ( 
-            <ul>
+            <ul className = "item_list campus_list">
                 { campus_list }
             </ul> 
         );

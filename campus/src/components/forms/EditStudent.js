@@ -118,31 +118,45 @@ class EditStudent extends Component {
 
 	render () {
 
-		console.log(this.state.rawData);
-
 		return (
+			<div class = "editForm-wrapper">
+				<h1>Edit Student</h1>
 
-			( (this.state.isFound) ? (
-				<div className = "editForm">
-					<label htmlFor = "firstName">First Name</label>
-					<input type = "text" name = "firstName" value = { this.state.firstName } onChange = {this.handleInputChange} />
+				{ (this.state.isFound) ? (
 
-					<label htmlFor = "lastName">Last Name</label>
-					<input type = "text" name = "lastName" value = { this.state.lastName } onChange = {this.handleInputChange} />
+				<div className = "editForm form">
 
-					<label htmlFor = "email">Email Address</label>
-					<input type = "email" name = "email" value = { this.state.email } onChange = {this.handleInputChange} />
+					<div className = "input_wrapper">
+						<label htmlFor = "firstName">First Name</label>
+						<input type = "text" name = "firstName" value = { this.state.firstName } onChange = {this.handleInputChange} />
+					</div>
+					
+					<div className = "input_wrapper">
+						<label htmlFor = "lastName">Last Name</label>
+						<input type = "text" name = "lastName" value = { this.state.lastName } onChange = {this.handleInputChange} />
+					</div>
 
-					<label htmlFor = "gpa">GPA</label>
-					<input type = "text" name = "gpa" value = {this.state.gpa} onChange = {this.handleInputChange} />
+					<div className = "input_wrapper">
+						<label htmlFor = "email">Email Address</label>
+						<input type = "email" name = "email" value = { this.state.email } onChange = {this.handleInputChange} />
+					</div>
 
-					<input type = "submit" onClick = { this.submitData } />
+					<div className = "input_wrapper">
+						<label htmlFor = "gpa">GPA</label>
+						<input type = "text" name = "gpa" value = {this.state.gpa} onChange = {this.handleInputChange} />
+					</div>
 
-					<StudentList studentList = { this.state.rawData } />
+					<div className = "btn_controls_wrapper">
+						<input type = "submit" className = "btn_link" onClick = { this.submitData } value = "Save Changes" />
+					</div>
 				</div>
-			) : (
-				<div className = "error">Student Not Found</div>
-			))
+
+				) : (
+					<div className = "error">Student Not Found</div>
+				)}
+
+			</div>
+			
 		)
 
 	}

@@ -74,20 +74,31 @@ class EditCampus extends Component {
 		console.log(this.state.isFound);
 
 		return (
+			<div className = "editForm-wrapper">
+				<h1>Edit Campus</h1>
 
-			( (this.state.isFound) ? (
-				<div className = "editForm">
-					<label htmlFor = "name">Campus Name</label>
-					<input type = "text" name = "name" value = { this.state.name } onChange = {this.handleInputChange} />
+				{ (this.state.isFound) ? (
+					<div className = "editForm form">
 
-					<label htmlFor = "address">Campus Address</label>
-					<input type = "text" name = "address" value = { this.state.address } onChange = {this.handleInputChange} />
+						<div className = "input_wrapper">
+							<label htmlFor = "name">Campus Name</label>
+							<input type = "text" name = "name" value = { this.state.name } onChange = {this.handleInputChange} />
+						</div>
 
-					<input type = "submit" onClick = { this.submitData } />
-				</div>
-			) : (
-				<div className = "error">Campus Not Found</div>
-			))
+						<div className = "input_wrapper">
+							<label htmlFor = "address">Campus Address</label>
+							<input type = "text" name = "address" value = { this.state.address } onChange = {this.handleInputChange} />
+						</div>
+
+						<div className = "btn_controls_wrapper">
+							<input type = "submit" onClick = { this.submitData } className = "btn_link" />
+						</div>
+					</div>
+				) : (
+					<div className = "error">Campus Not Found</div>
+				)}
+
+			</div>
 		)
 
 	}
