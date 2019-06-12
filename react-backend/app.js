@@ -1,19 +1,42 @@
+
+//npm install express morgan nodemon concurrently body-PerformanceResourceTiming.apply.apply.
+
 const express = require("express");
 const app = express();
-const morgan = require('morgan');
+//const morgan = require('morgan');
+//const bodyParser=require("body-parser");
 const PORT=5000;
-
-// "scripts": {
-//   "start": "node ./bin/www" //changed to app.js
-// },
- //const db = require('./database/data');
-
 var createError = require('http-errors');
 var path = require('path');
 //var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//app.use(bodyParser.json())
+//app.use(bodyParser.urlencoded());
+app.use(express.json());
 
-//to use index.app , require route module to use()
+app.use("/database",require("./database"));
+
+const createLocalDatabase = require('./utilities/createLocalDatabase');
+const {db}=require('./database');
+
+// A helper function to sync our database;
+const syncDatabase = () => {
+  if (process.env.NODE_ENV === 'production') {
+    db.sync();
+  }
+  else {
+    console.log('As a reminder, the forced synchronization option is on');
+    db.sync({ force: true })
+      .catch(err => {
+        if (err.name === 'SequelizeConnectionError') {
+          createLocalDatabase();
+        }
+        else {
+          console.log(err);
+        }
+      });
+    }
+}; 
 
  //for home ???
 const indexRouter =require("./routes/index");
@@ -28,15 +51,6 @@ app.use('/users',userRouter);
 app.use('/students',studentRouter);
 app.use('/campuses',campusRouter);
 
-//api calls
-// app.get('/api/hello',function(req,res,next){
-//   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-// })
-
-// app.post('/api/world', (req, res) => {
-//   console.log(req.body);
-//   res.send(`I received your POST request. This is what you sent me: ${req.body.post}`,);
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,6 +77,15 @@ app.use(function(error, req, res, next) {
   res.status(error.status || 500);
   res.render('error');
 });
+
+// Main function declaration;
+const bootApp = async () => {
+  await syncDatabase();
+  await configureApp();
+};
+
+// Main function invocation;
+bootApp();
 
 app.listen(PORT, () => {
   console.log(`Server runnin on ${PORT}`);

@@ -2,6 +2,7 @@
 
 // Module dependencies;
 const Sequelize = require('sequelize');
+//var sequelize=new Sequelize('');
 const databaseName = require('../utilities/databaseName');
 
 // Confirmation message (limit these in production);

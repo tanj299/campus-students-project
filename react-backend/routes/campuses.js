@@ -1,6 +1,9 @@
 
 const router=require('express').Router();
 
+const {db}=require('../models');
+
+const Sequelize=require("sequelize");
 //id just added to  test for now
 // const campuses=[{id:1,name:"Hunter College",  
 // address: "695 Park Ave, New York, NY 10065"},
