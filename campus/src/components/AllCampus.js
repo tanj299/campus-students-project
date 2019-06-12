@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import { connect } from 'react-redux'
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 import CampusList from './partials/CampusList';
+import { fetchAllCampusThunk, removeCampusThunk } from '../components/store/utilities/Campus'
 
 class AllCampus extends Component {
 
@@ -25,7 +27,10 @@ class AllCampus extends Component {
 
 	}
 
-	// componentDidMount () {
+	componentDidMount () { 
+		this.props.fetchAllCampus();
+		console.log(this.props.fetchAllCampus);
+	}
 
 	// 	axios.get("/campuses/all")
 	// 		.then( (response) => {
@@ -59,5 +64,18 @@ class AllCampus extends Component {
 
 }
 
-export default AllCampus;
+const mapStateToProps = (state) => { 
+	return { 
+		campus: state.allCampus
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchAllCampus: () => dispatch(fetchAllCampusThunk()),
+		removeCampus: () => dispatch(removeCampusThunk())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllCampus);
 
