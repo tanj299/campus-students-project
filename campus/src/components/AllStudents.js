@@ -51,13 +51,14 @@ class AllStudents extends Component {
 	
 	componentDidMount() {
 		this.props.fetchAllStudents()
+		axios.get('http://localhost:5000/api/students').then(response => response.data).then(data => console.log('Axios data', data)).catch(err => console.error(err))
 		// const {data} = await axios.get('http://localhost:3001/students')
 		// this.setState({data})
-		console.log(this.props.allStudents)
+		console.log('CDM', this.props)
 	}
 
 	render () {
-
+		console.log("render method", this.props.allStudents);
 		return (
 
 			<div className = "all_students list_all">
@@ -66,7 +67,8 @@ class AllStudents extends Component {
 				</div>
 
 				<div className = "large_list">
-					<StudentList studentList = { this.state.data } />
+					<p>Student count: {this.props.allStudents.length}</p>
+					<StudentList studentList = { this.props.allStudents } />
 				</div>
 			</div>
 		)
@@ -79,9 +81,11 @@ class AllStudents extends Component {
 // the keys of these objects will be available on our props now 
 // "I want all students in this component, from my redux store"
 const mapStateToProps = (state) => {
-	console.log(state)
+	console.log('The store', state)
 	return {
-		allStudents: state.allStudents
+		// allStudents expects from my reducer, a allStudents object, which we then call allStudents 
+		allStudents: state.allStudents,
+		myNewKey: state.myNewKey
 	}
 }
 
@@ -92,8 +96,10 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		// remember, fetchAllStudents is a key; the key can literally be 'banana'
 		// which would then invoke a dispatch 
+
+		// fetchAllStudents is a key which will be put on this.props (oh this component) and then it will --> runs fetchStudentThunk
 		fetchAllStudents: () => dispatch(fetchStudentThunk()),
-		addStudent: () => dispatch(addStudent())
+		// addStudent: () => dispatch(addStudent())
 	}
 }
 

@@ -5,12 +5,13 @@ let initialState = {}  ;
 // ************************************ ACTION TYPES ************************************
 const FETCH_STUDENT = "FETCH_STUDENT";
 const REMOVE_STUDENT = 'REMOVE_STUDENT';
-const ADD_STUDENT = 'ADD_STUDENT';
 
 // ************************************ ACTION CREATORS ************************************
 // the student parameter is passed as an argument from the axios call, data => dispatch(fetchStudent(data[0]))
 // we need to setup a proxy in our package.json in our front end in order to imitate the fact that we're making this requst from the a separate server 
 // with a proxy, it is as if the front-end and back-end is running on the same server 
+
+// this sends data from api to reducer 
 const fetchAllStudents = (student) => {
     return {
         type: FETCH_STUDENT,
@@ -25,15 +26,8 @@ const removeStudent = (student) => {
     }
 }
 
-const addStudent = (student) => {
-    return {
-        type: ADD_STUDENT, 
-        payload: student 
-    }
-}
-
 // ************************************ THUNK CREATORS ************************************
-export const fetchAllStudentThunk = (student) => (dispatch) => {
+export const fetchStudentThunk = () => (dispatch) => {
     return axios 
         // instead of writing the backend path, our proxy takes care of that for us 
         // in ./package.json in the last line 
@@ -43,13 +37,7 @@ export const fetchAllStudentThunk = (student) => (dispatch) => {
         .catch(err => console.log(err));
 } 
 
-export const addStudentThunk = (student) => (dispatch) => {
-    return axios
-        .get("/api/students")
-
-}
-
-export const removeStudentThunk = (student) => (dispatch) => {
+export const removeStudentThunk = () => (dispatch) => {
     return axios 
         .get("/api/students")
         .then(response => response.data)
@@ -70,7 +58,7 @@ export default (state=[], action) => {
             return action.payload; 
         case REMOVE_STUDENT:
             // returns all students except that one student, whether it's by id or whatnot, you can use splice 
-            return action.payload; 
+            return action.payload;
         default:
             return state; 
     }
