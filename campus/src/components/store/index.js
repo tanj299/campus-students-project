@@ -1,3 +1,5 @@
+// ************************************** STORE **************************************
+
 // combineReducers = takes all reducers, and place them in one big object
 // where each key of that object is the name of the reducer, and each value 
 // is the output of the reducer function 
