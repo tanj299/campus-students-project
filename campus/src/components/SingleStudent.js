@@ -44,7 +44,7 @@ class SingleStudent extends Component {
 	}
 
 	render () {
-		const student = this.state.data[0] || 'NO student'
+		const student = this.props.data || 'NO student'
 
 		return (
 			<div>
