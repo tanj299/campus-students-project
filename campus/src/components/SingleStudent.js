@@ -1,8 +1,10 @@
+import { fetchStudentThunk } from '../components/store/utilities/Student';
+import { removeStudentThunk } from '../components/store/utilities/Student';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import React, { Component, Fragment } from 'react';
-// import axios from 'axios';
 
 let rawData = [
-
 	{ 
 		id: 1, 
 		firstName: 'John', 
@@ -19,7 +21,7 @@ class SingleStudent extends Component {
 		super(props);
 
 		this.state = {
-
+			id: "",
 			data: undefined,
 			campus: props.campusInfo
 
@@ -42,6 +44,7 @@ class SingleStudent extends Component {
 	}
 
 	render () {
+		const student = this.state.data[0] || 'NO student'
 
 		return (
 			<div>
@@ -64,4 +67,17 @@ class SingleStudent extends Component {
 
 }
 
+// function mapStateToProps(state)  {
+// 	return {
+// 		currentStudent: state.currentStudent
+// 	}
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		fetchStudent: () => dispatch(fetchStudentThunk(id)),
+// 		removeStudent: () => dispatch(removeStudentThunk())
+// 	}
+// }
 export default SingleStudent;
+
