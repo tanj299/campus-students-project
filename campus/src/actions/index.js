@@ -1,10 +1,28 @@
  // actions/index.js
 // Namespace actions
 
-//export const INCREMENT = 'counter/INCREMENT';
+// import axios from 'axios';
 
-//const FOO='FOO'
-// function foo(num){
-//     type:foo,
-//     num
+export function fetchHome(){
+    return{
+        type:"FETCH_HOME",
+        payload:{
+            firstName:"",
+            lastName:" "
+        }
+    }
+}
+// export function fetchHome(){
+//     return function(dispatch){
+//         axios.get("htt://")
+//         .then((res)=>{
+//             dispatch({
+//                 type:"FETCH_HOME",
+//                 payload:res.data
+//             })
+//         })
+//     }
 // }
+
+export const INCREMENT = 'counter/INCREMENT';
+

@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 
+//import {fetchHome} from "./actions/index";
+//import {connect} from "react-redux";
+//@connect((store)=>{
+// 	return{
+// 		firstName:store.user
+// 	}
+// })
+// export connectedComponent(mapStateToprops,null){
+// 	return {
+// 		home: state...
+// 	}
+// }
 class Home extends Component  {
 	constructor(props){
 		super(props);
@@ -13,6 +25,8 @@ class Home extends Component  {
 // 	this.setState({data})
 // 	}
 componentDidMount() {
+	//this.props.dispatch(fetchHome))
+
 	//call fetch function once component mounts
 	this.callBackendAPI()
 		.then(res=>this.setState({data:res.express}))
@@ -27,6 +41,9 @@ callBackendAPI=async()=>{
 	}
 	return body;
 };
+//fetchHome(){
+// 	this.props.dispatch(fetchHome())
+// }
 
 render(){
 	return (

@@ -21,11 +21,14 @@ router.get("/:id", (req, res,next) => {
 
  //routes to add a new student
 router.post("/",(req,res)=>{
+  var id=req.body.id;
+ // res.redirect('/'+id);
   res.json(" add a new student")
 });
 
 //route to update or edit student
 router.put("/:id",(req,res)=>{
+  var id=req.
     res.json("edit a student")
 });
 

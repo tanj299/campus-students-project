@@ -2,6 +2,9 @@
 // var router = express.Router();
 const router=require("express").Router();
 
+// router.use("/students",studentRouter);
+// router.use("/campuses",campusRouter);
+
 /* GET home page. */
 //when GET request made to home page
 router.get('/',function(req,res,next){
