@@ -87,8 +87,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		// remember, fetchAllStudents is a key; the key can literally be 'banana'
 		// which would then invoke a dispatch 
-		fetchAllStudents: () => dispatch(fetchStudentThunk())
-
+		fetchAllStudents: () => dispatch(fetchStudentThunk()),
+		addStudent: () => dispatch(addStudent())
 	}
 }
 

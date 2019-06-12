@@ -5,6 +5,7 @@ let initialState = {}  ;
 // ************************************ ACTION TYPES ************************************
 const FETCH_STUDENT = "FETCH_STUDENT";
 const REMOVE_STUDENT = 'REMOVE_STUDENT';
+const ADD_STUDENT = 'ADD_STUDENT';
 
 // ************************************ ACTION CREATORS ************************************
 // the student parameter is passed as an argument from the axios call, data => dispatch(fetchStudent(data[0]))
@@ -17,14 +18,22 @@ const fetchAllStudents = (student) => {
     }
 }
 
-const removeStudent = () => {
+const removeStudent = (student) => {
     return {
         type: REMOVE_STUDENT,
+        payload: student
+    }
+}
+
+const addStudent = (student) => {
+    return {
+        type: ADD_STUDENT, 
+        payload: student 
     }
 }
 
 // ************************************ THUNK CREATORS ************************************
-export const fetchStudentThunk = () => (dispatch) => {
+export const fetchAllStudentThunk = (student) => (dispatch) => {
     return axios 
         // instead of writing the backend path, our proxy takes care of that for us 
         // in ./package.json in the last line 
@@ -34,8 +43,18 @@ export const fetchStudentThunk = () => (dispatch) => {
         .catch(err => console.log(err));
 } 
 
-export const removeStudentThunk = () => (dispatch) => {
-    return dispatch(removeStudent());
+export const addStudentThunk = (student) => (dispatch) => {
+    return axios
+        .get("/api/students")
+
+}
+
+export const removeStudentThunk = (student) => (dispatch) => {
+    return axios 
+        .get("/api/students")
+        .then(response => response.data)
+        .then(data => dispatch(removeStudent(data)))
+        .catch(err => console.log(err));
 }
 
 // ************************************ REDUCER  ************************************
@@ -50,7 +69,8 @@ export default (state=[], action) => {
             // --> back to THUNK CREATORS and new data, which is the payload, is dispatched in dispatch()
             return action.payload; 
         case REMOVE_STUDENT:
-            return {};
+            // returns all students except that one student, whether it's by id or whatnot, you can use splice 
+            return action.payload; 
         default:
             return state; 
     }
