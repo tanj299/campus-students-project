@@ -6,7 +6,8 @@ const router=require("express").Router();
 //when GET request made to home page
 router.get('/',function(req,res,next){
     //res.render('index',{title:'Express'});
-    res.send("Home");
+   res.send({express: "Home"});
+    //res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
     
 // if clicked students redirect to student route
    // res.redirect('./students');

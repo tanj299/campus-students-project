@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
-const morgan = require('morgan')
+const morgan = require('morgan');
+const PORT=5000;
+
+// "scripts": {
+//   "start": "node ./bin/www"
+// },
+// changed to "start":"node app.js"
 
 var createError = require('http-errors');
 var path = require('path');
@@ -8,12 +14,23 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //to use index.app , require route module to use()
-const indexRouter =require("./routes/index"); //for home
+
+ //for home ???
+const indexRouter =require("./routes/index");
 const userRouter=require("./routes/users"); //not using
 
 const studentRouter=require("./routes/students");
 const campusRouter=require("./routes/campuses");
 
+//api calls
+app.get('/api/hello',function(req,res,next){
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+})
+
+app.post('/api/world', (req, res) => {
+  console.log(req.body);
+  res.send(`I received your POST request. This is what you sent me: ${req.body.post}`,);
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -25,7 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const PORT=3000;
+
 
 app.use('/', indexRouter);
 app.use('/users',userRouter);

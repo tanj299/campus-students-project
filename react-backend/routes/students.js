@@ -2,13 +2,12 @@
 // const router=express.Router();
 
 const router = require("express").Router();
-
-
+const cors=require('cors');
 //dummy data
-const students = [{id:1,firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
+const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
 //route to serve all students
-router.get("/", (req, res, next) => {
+router.get("/", cors(), (req, res, next) => {
   // res.json("ALL OF THE STUDENTS!!!");
   res.json(students)
 });

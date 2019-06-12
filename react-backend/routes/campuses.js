@@ -10,8 +10,7 @@ address: "66 5th Ave, New York, NY 10011"}
 
 //route to serve all campuses
 router.get("/",(req,res,next)=>{
-    res.json(campuses);
-    
+    res.json(campuses);   
 })
 
 //routes to serve single campus
