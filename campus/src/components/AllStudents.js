@@ -3,7 +3,7 @@ import axios from 'axios';
 import StudentList from './partials/StudentList';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchStudentThunk } from '../components/store/utilities/Student';
+import { fetchStudentThunk, removeStudentThunk } from '../components/store/utilities/Student';
 
 let rawData = [
 	{ 
@@ -58,9 +58,14 @@ class AllStudents extends Component {
 
 		return (
 
-			<div className = "all_students">
-				<Link to = "/add/student">Add Student</Link>
-				<StudentList studentList = { this.state.data } />
+			<div className = "all_students list_all">
+				<div className = "btn_controls_wrapper">
+					<Link className = "btn_link" to = "/add/student">Add Student</Link>
+				</div>
+
+				<div className = "large_list">
+					<StudentList studentList = { this.state.data } />
+				</div>
 			</div>
 		)
 
@@ -74,15 +79,17 @@ class AllStudents extends Component {
 const mapStateToProps = (state) => {
 	console.log(state)
 	return {
-		currentStudent: state.currentStudent
+		allStudents: state.allStudents
 	}
 }
 
 // returns objects with keys
 // one of the keys can be named anything; called from component
+// goes to store, chooses the appropriate function with the key 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		// remember, fetchAllStudents is a key; the key can literally be 'banana'
+		// which would then invoke a dispatch 
 		fetchAllStudents: () => dispatch(fetchStudentThunk())
 
 	}
