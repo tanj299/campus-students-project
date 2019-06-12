@@ -53,9 +53,14 @@ class AllCampus extends Component {
 
 		return (
 
-			<div className = "all_campuses">
-				<Link to = "/add/campus">Add Campus</Link>
-				<CampusList campusList = { this.state.data } />
+			<div className = "all_campuses list_all">
+				<div className = "btn_controls_wrapper">
+					<Link className = "btn_link" to = "/add/campus">Add Campus</Link>
+				</div>
+
+				<div className = "large_list">
+					<CampusList campusList = { this.state.data } />
+				</div>
 			</div>
 
 		)

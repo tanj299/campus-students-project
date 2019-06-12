@@ -60,9 +60,14 @@ class AllStudents extends Component {
 
 		return (
 
-			<div className = "all_students">
-				<Link to = "/add/student">Add Student</Link>
-				<StudentList studentList = { this.state.data } />
+			<div className = "all_students list_all">
+				<div className = "btn_controls_wrapper">
+					<Link className = "btn_link" to = "/add/student">Add Student</Link>
+				</div>
+
+				<div className = "large_list">
+					<StudentList studentList = { this.state.data } />
+				</div>
 			</div>
 		)
 

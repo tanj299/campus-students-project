@@ -50,6 +50,7 @@ class SingleCampus extends Component {
 
 						<p className = "address">{this.state.data.address}</p>
 
+						
 					</Fragment>) :
 					(
 						<p className = "error">There was an error.</p>
