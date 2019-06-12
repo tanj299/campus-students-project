@@ -1,13 +1,12 @@
-// const express=require('express');
-// const router=express.Router();
-
 const router = require("express").Router();
-const cors=require('cors');
+
+//const {Campuses}=require('../database/models');
+
 //dummy data
 const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
 //route to serve all students
-router.get("/", cors(), (req, res, next) => {
+router.get('/', async(req, res, next) => {
   // res.json("ALL OF THE STUDENTS!!!");
   res.json(students)
 });
