@@ -40,9 +40,7 @@ class AddStudentForm extends Component {
 	}
 
 	render () {
-
 		return (
-			
 			<div>
 				<label className = "add_item_label" htmlFor = "firstName">
 					First Name

@@ -1,3 +1,6 @@
+import { fetchStudentThunk } from './store/utilities/Student';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 // import axios from 'axios';
 
@@ -42,6 +45,7 @@ class SingleStudent extends Component {
 	}
 
 	render () {
+		const student = this.state.data[0] || 'NO student'
 
 		return (
 			<div>
@@ -64,4 +68,8 @@ class SingleStudent extends Component {
 
 }
 
+function mapState(state)  {
+	// return  { data:  }
+}
 export default SingleStudent;
+
