@@ -7,7 +7,7 @@ const cors = require('cors')
 
 //route to serve all campuses
 router.get("/", cors(), (req,res,next)=>{
-    Player.findAll()
+    Campus.findAll()
         .then(campuses=>res.json(campuses))
         .catch(next)
    // res.json(campuses);
