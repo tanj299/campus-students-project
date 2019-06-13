@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-// import { fetchStudentThunk } from '../components/store/utilities/Student';
-// import { removeStudentThunk } from '../components/store/utilities/Student';
-// import { connect } from 'react-redux';
-// import axios from 'axios';
-=======
 import { fetchStudentThunk } from '../components/store/utilities/Student';
 import { removeStudentThunk } from '../components/store/utilities/Student';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
 import React, { Component, Fragment } from 'react';
 
 let rawData = [
@@ -52,11 +45,7 @@ class SingleStudent extends Component {
 	}
 
 	render () {
-<<<<<<< HEAD
 		// const student = this.props.data || 'NO student'
-=======
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
-
 		return (
 			<div>
 				{ (this.state.data != null) ? (

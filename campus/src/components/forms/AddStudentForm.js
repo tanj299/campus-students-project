@@ -32,9 +32,6 @@ class AddStudentForm extends Component {
 
 	submitData (e) {
 		e.preventDefault();
-<<<<<<< HEAD
-		this.props.newStudent(this.state);
-=======
 
 		if (this.state.firstName.length < 1 
 			|| this.state.lastName.length < 1 
@@ -47,7 +44,6 @@ class AddStudentForm extends Component {
 				return;
 			}
 
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
 		// axios.post('/add/campus', { firstName: this.state.firstName, lastName: this.state.lastName })
 		// 	.then( (res) => {
 		// 		console.log(res);
@@ -105,17 +101,14 @@ class AddStudentForm extends Component {
 
 }
 
-<<<<<<< HEAD
-const mapDispatchToProps = (dispatch) => {
-	return {
-		newStudent: (studentToPost) => dispatch(addNewStudentThunk(studentToPost))
-	}
-}
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		newStudent: (studentToPost) => dispatch(addNewStudentThunk(studentToPost))
+// 	}
+// }
 
-// null is passed in since we don't use mapStateToProps
-// we don't care about adding this component's state to the props 
-export default connect(null, mapDispatchToProps)(AddStudentForm);
-=======
+// // null is passed in since we don't use mapStateToProps
+// // we don't care about adding this component's state to the props 
+// export default connect(null, mapDispatchToProps)(AddStudentForm);
 export default AddStudentForm;
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
 

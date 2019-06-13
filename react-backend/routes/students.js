@@ -1,10 +1,10 @@
 
 const router = require("express").Router();
-<<<<<<< HEAD
-const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {firstName: "Eren", lastName: "Jaeger", email: "thechosenone@example.com"}]
-=======
+//const {Campus,Student} = require('../database/models');
+
+
 const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
+
 const cors = require('cors')
 //route to serve all students
 router.get("/", cors(), (req, res, next) => {

@@ -1,16 +1,24 @@
 
 const router=require('express').Router();
-const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}]
+
+//const {Campus} = require('../database/models');
+//const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}]
 const cors = require('cors')
 
 //route to serve all campuses
 router.get("/", cors(), (req,res,next)=>{
-    res.json(campuses);
+    Player.findAll()
+        .then(campuses=>res.json(campuses))
+        .catch(next)
+   // res.json(campuses);
 })
 
 //routes to serve single campus
 router.get("/:id",(req,res,next)=>{
-    res.json("single campus");
+    Campus.findById(req.params.id)
+    .then(campuses=>res.json(campuses))
+    .catch(next)
+    // res.json("single campus");
 })
 
 //route to add a new campus
