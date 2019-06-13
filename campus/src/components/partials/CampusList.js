@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react';
-// import axios from 'axios';
-
 import { Link } from 'react-router-dom';
 
 function CampusInfo ({ campusData }) {

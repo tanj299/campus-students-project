@@ -1,7 +1,7 @@
-import { fetchStudentThunk } from '../components/store/utilities/Student';
-import { removeStudentThunk } from '../components/store/utilities/Student';
-import { connect } from 'react-redux';
-import axios from 'axios';
+// import { fetchStudentThunk } from '../components/store/utilities/Student';
+// import { removeStudentThunk } from '../components/store/utilities/Student';
+// import { connect } from 'react-redux';
+// import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 
 let rawData = [
@@ -33,7 +33,7 @@ class SingleStudent extends Component {
 
 		for (let i = 0; i < rawData.length; i++) {
 			
-			if (rawData[i].id == this.props.match.params.id) {
+			if (rawData[i].id === this.props.match.params.id) {
 				this.setState({
 					data: rawData[i]
 				});
@@ -44,7 +44,7 @@ class SingleStudent extends Component {
 	}
 
 	render () {
-		const student = this.props.data || 'NO student'
+		// const student = this.props.data || 'NO student'
 
 		return (
 			<div>

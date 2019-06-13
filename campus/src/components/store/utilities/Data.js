@@ -1,3 +1,3 @@
 export default () => {
-    return 'foobar'
+    return 'this new key value'
 }

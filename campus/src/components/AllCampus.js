@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import axios from 'axios';
-import {Link} from 'react-router-dom';
 import CampusList from './partials/CampusList';
-import { fetchAllCampusThunk, removeCampusThunk } from '../components/store/utilities/Campus'
+import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import Campus, { fetchAllCampusThunk, removeCampusThunk } from '../components/store/utilities/Campus'
 
 class AllCampus extends Component {
 
@@ -29,7 +28,8 @@ class AllCampus extends Component {
 
 	componentDidMount () { 
 		this.props.fetchAllCampus();
-		console.log(this.props.fetchAllCampus);
+		console.log("Campus Props", this.props)
+		// console.log(this.props.fetchAllCampus());
 	}
 
 	// 	axios.get("/campuses/all")
@@ -59,7 +59,9 @@ class AllCampus extends Component {
 				</div>
 
 				<div className = "large_list">
-					<CampusList campusList = { this.state.data } />
+					{/* <p>Campus Count: {this.props.allCampus.length}</p> */}
+					{/* <CampusList campusList = {this.state.data}/> */}
+					<CampusList campusList = { this.props.allCampus } />
 				</div>
 			</div>
 
@@ -71,14 +73,14 @@ class AllCampus extends Component {
 
 const mapStateToProps = (state) => { 
 	return { 
-		campus: state.allCampus
+		allCampus: state.allCampus
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchAllCampus: () => dispatch(fetchAllCampusThunk()),
-		removeCampus: () => dispatch(removeCampusThunk())
+		// removeCampus: () => dispatch(removeCampusThunk())
 	}
 }
 

@@ -1,9 +1,11 @@
 
 const router=require('express').Router();
+const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}]
+const cors = require('cors')
 
 //route to serve all campuses
-router.get("/",(req,res,next)=>{
-    res.json("ALL CAMPUSES");
+router.get("/", cors(), (req,res,next)=>{
+    res.json(campuses);
 })
 
 //routes to serve single campus

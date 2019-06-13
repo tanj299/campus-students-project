@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import StudentList from './../partials/StudentList';
+// import axios from 'axios';
+// import StudentList from './../partials/StudentList';
 
 class EditStudent extends Component {
 
@@ -80,7 +80,7 @@ class EditStudent extends Component {
 
 		for (let i = 0; i < this.state.rawData.length; i++) {
 
-			if (this.state.rawData[i].id == this.props.match.params.id) {
+			if (this.state.rawData[i].id === this.props.match.params.id) {
 
 				this.setState({
 					isFound: true,

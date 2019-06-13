@@ -54,7 +54,7 @@ class EditCampus extends Component {
 			
 			console.log(rawData[i].id);
 
-			if (rawData[i].id == this.props.match.params.id) {
+			if (rawData[i].id === this.props.match.params.id) {
 
 				this.setState({
 					isFound: true,

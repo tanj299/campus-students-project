@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { addNewStudentThunk } from '../store/utilities/Student'
+// import axios from 'axios';
+// import { allStudents } from '../../reducers';
 
 class AddStudentForm extends Component {
 
@@ -27,7 +30,7 @@ class AddStudentForm extends Component {
 
 	submitName (e) {
 		e.preventDefault();
-
+		this.props.newStudent(this.state);
 		// axios.post('/add/campus', { firstName: this.state.firstName, lastName: this.state.lastName })
 		// 	.then( (res) => {
 		// 		console.log(res);
@@ -66,6 +69,13 @@ class AddStudentForm extends Component {
 
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		newStudent: (studentToPost) => dispatch(addNewStudentThunk(studentToPost))
+	}
+}
 
-export default AddStudentForm;
+// null is passed in since we don't use mapStateToProps
+// we don't care about adding this component's state to the props 
+export default connect(null, mapDispatchToProps)(AddStudentForm);
 

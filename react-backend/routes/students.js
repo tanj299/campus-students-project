@@ -1,6 +1,6 @@
 
 const router = require("express").Router();
-const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
+const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {firstName: "Eren", lastName: "Jaeger", email: "thechosenone@example.com"}]
 const cors = require('cors')
 //route to serve all students
 router.get("/", cors(), (req, res, next) => {

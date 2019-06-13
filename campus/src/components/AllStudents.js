@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import StudentList from './partials/StudentList';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchStudentThunk, removeStudentThunk } from '../components/store/utilities/Student';
+import { fetchAllStudentsThunk, addNewStudentThunk, removeStudentThunk } from '../components/store/utilities/Student';
 
-let rawData = [
-
-	{ 
-		id: 1, 
-		firstName: 'John', 
-		lastName: 'Smith', 
-		email: 'jsmith@gmail.com',
-		gpa: '3.5'
-	}
-];
 
 class AllStudents extends Component {
 
@@ -51,7 +40,7 @@ class AllStudents extends Component {
 	
 	componentDidMount() {
 		this.props.fetchAllStudents()
-		axios.get('http://localhost:5000/api/students').then(response => response.data).then(data => console.log('Axios data', data)).catch(err => console.error(err))
+		// axios.get('http://localhost:5000/api/students').then(data => console.log('Axios data', data)).catch(err => console.error(err))
 		// const {data} = await axios.get('http://localhost:3001/students')
 		// this.setState({data})
 		console.log('CDM', this.props)
@@ -62,13 +51,14 @@ class AllStudents extends Component {
 		return (
 
 			<div className = "all_students list_all">
-				<div className = "btn_controls_wrapper">
+				<div className="btn_controls_wrapper"> <p className="counter">Student count: {this.props.allStudents.length}</p>
 					<Link className = "btn_link" to = "/add/student">Add Student</Link>
 				</div>
 
 				<div className = "large_list">
-					<p>Student count: {this.props.allStudents.length}</p>
+					{/* <div>this.props.allStudents.map(() => )</div> */}
 					<StudentList studentList = { this.props.allStudents } />
+						
 				</div>
 			</div>
 		)
@@ -83,9 +73,11 @@ class AllStudents extends Component {
 const mapStateToProps = (state) => {
 	console.log('The store', state)
 	return {
-		// allStudents expects from my reducer, a allStudents object, which we then call allStudents 
+		// allStudents expects from my reducer, an allStudents object, which we then call state.allStudents 
+		// and now the first allStudents will "become" state.allStudents
+		// the "state" here is really the state of the store that we're grabbing, NOT local state from THIS component!
 		allStudents: state.allStudents,
-		myNewKey: state.myNewKey
+		myNewKey: state.myOldKey
 	}
 }
 
@@ -97,9 +89,9 @@ const mapDispatchToProps = (dispatch) => {
 		// remember, fetchAllStudents is a key; the key can literally be 'banana'
 		// which would then invoke a dispatch 
 
-		// fetchAllStudents is a key which will be put on this.props (oh this component) and then it will --> runs fetchStudentThunk
-		fetchAllStudents: () => dispatch(fetchStudentThunk()),
-		// addStudent: () => dispatch(addStudent())
+		// fetchAllStudents is a key which will be put on this.props (on this component) and then it will --> runs fetchStudentThunk
+		fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
+		// addNewStudent: () => dispatch(addNewStudentThunk())
 	}
 }
 

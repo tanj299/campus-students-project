@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-let initialState = {};
+// let initialState = {};
 
 // ************************************ ACTION TYPES ************************************
-const FETCH_CAMPUS= "FETCH_CAMPUS";
+const FETCH_ALL_CAMPUS= "FETCH_CAMPUS";
 const REMOVE_CAMPUS = "REMOVE_CAMPUS";
 
 // ************************************ ACTION CREATORS ************************************
 const fetchAllCampus = (campus) => {
     return {
-        type: FETCH_CAMPUS,
+        type: FETCH_ALL_CAMPUS,
         payload: campus
     }
 }
@@ -25,7 +25,7 @@ export const fetchAllCampusThunk = () => (dispatch) => {
     return axios
         // instead of writing the backend path, our proxy takes care of that for us 
         // in ./package.json in the last line 
-        .get("/api/campus")
+        .get("/api/campuses")
         .then(response => response.data)
         .then(data => dispatch(fetchAllCampus(data)))
         .catch(err => console.log(err));
@@ -35,10 +35,10 @@ export const removeCampusThunk = () => (dispatch) => {
     return dispatch(removeCampus());
 }
 
-// ************************************ REDUCER  ************************************
+// ************************************ REDUCER ************************************
 export default (state = [], action) => {
     switch (action.type) {
-        case FETCH_CAMPUS:
+        case FETCH_ALL_CAMPUS:
             return action.payload;
         case REMOVE_CAMPUS:
             return {};
