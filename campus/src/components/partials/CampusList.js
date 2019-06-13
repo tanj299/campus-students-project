@@ -51,7 +51,7 @@ class CampusList extends Component {
 			if (this.state.searchTerm.length > 3)
 				return c.name.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1;
 			else
-				return c == c
+				return true
 		}).map( (s, i) => {
 			return (
 				<li className = "item_sm" key = { s.id } >

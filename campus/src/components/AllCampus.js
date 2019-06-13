@@ -47,7 +47,7 @@ class AllCampus extends Component {
 
 const mapStateToProps = (state) => { 
 	return { 
-		allCampus: state.allCampus
+		allCampus: state.allCampus.campus
 	}
 }
 

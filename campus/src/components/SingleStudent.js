@@ -22,38 +22,37 @@ class SingleStudent extends Component {
 	}
 
 	componentDidMount () {
-
-		for (let i = 0; i < rawData.length; i++) {
+		console.log(this.props.match.params.id)
+		this.props.fetchStudent(this.props.match.params.id);
+		// for (let i = 0; i < rawData.length; i++) {
 			
-			if (rawData[i].id == this.props.match.params.id) {
-				this.setState({
-					data: rawData[i]
-				});
+		// 	if (rawData[i].id === this.props.match.params.id) {
+		// 		this.setState({
+		// 			data: rawData[i]
+		// 		});
 
-				return;
-			}
-		}
+		// 		return;
+		// 	}
+		// }
 	}
 
 	render () {
+		// const student = this.props.data || 'NO student'
+
 		return (
 			<div>
-				{ (this.state.data != null) ? (
+				{ (this.props.currentStudent != null) ? (
 					<div className = "single_item_wrapper">
-						<h1>{this.state.data.firstName + " " + this.state.data.lastName}</h1>
-
+						<h1>{this.props.currentStudent.firstName + " " + this.props.currentStudent.lastName}</h1>
+						
 						<div className = "details">
-							<p className = "email">Email Address: {this.state.data.email}</p>
-							<p className = "gpa">GPA: {this.state.data.gpa}</p>
+							<p className = "email">Email Address: {this.props.currentStudent.email}</p>
+							<p className = "gpa">GPA: {this.props.currentStudent.gpa}</p>
 						</div>
 
 						<div className = "btn_controls_single">
-							<Link to = {'/edit/student/' + this.state.data.id } className = "btn_link">
-								<i class="fas fa-pencil-alt"></i>Edit
-							</Link>
-							<button className = "btn_link delete">
-								<i class="fas fa-trash"></i> Delete
-							</button>
+							<Link to = {'/edit/student/' + this.props.currentStudent.id } className = "btn_link">Edit</Link>
+							<button className = "btn_link delete">Delete</button>
 						</div>
 					</div>) :
 					(
@@ -67,17 +66,19 @@ class SingleStudent extends Component {
 
 }
 
-// function mapStateToProps(state)  {
-// 	return {
-// 		currentStudent: state.currentStudent
-// 	}
-// }
+const mapStateToProps = (state) => {
+	return {
+		currentStudent: state.allStudents.singleStudent,
+	}
+}
 
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-// 		fetchStudent: () => dispatch(fetchStudentThunk(id)),
-// 		removeStudent: () => dispatch(removeStudentThunk())
-// 	}
-// }
-export default SingleStudent;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchStudent: (id) => dispatch(fetchStudentThunk(id)),
+		removeStudent: () => dispatch(removeStudentThunk())
+	}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleStudent)
 
