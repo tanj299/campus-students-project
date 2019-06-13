@@ -12,18 +12,14 @@ class AllStudents extends Component {
 
 		this.state = {
 
-			data: [],
+			data: props.allStudents,
 			displayErrorMessage: false
 
 		}
 	}
 	
 	componentDidMount() {
-		this.props.fetchAllStudents()
-		// axios.get('http://localhost:5000/api/students').then(data => console.log('Axios data', data)).catch(err => console.error(err))
-		// const {data} = await axios.get('http://localhost:3001/students')
-		// this.setState({data})
-		console.log('CDM', this.props)
+		this.props.fetchAllStudents();
 	}
 
 	render () {

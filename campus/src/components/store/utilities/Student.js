@@ -41,6 +41,21 @@ export const fetchAllStudentsThunk = () => (dispatch) => {
         .then(response => response.data)
         .then(data => dispatch(fetchAllStudents(data)))
         .catch(err => console.log(err));
+
+    // return dispatch(fetchAllStudents([{ 
+    //     id: 1, 
+    //     firstName: 'John', 
+    //     lastName: 'Smith', 
+    //     email: 'jsmith@gmail.com',
+    //     gpa: '3.5'
+    // },
+    // { 
+    //     id: 2, 
+    //     firstName: 'Some', 
+    //     lastName: 'Guy', 
+    //     email: 'thisdudes@gmail.com',
+    //     gpa: '3.1415123242'
+    // }]));
 } 
 
 // The above is equivalent to the bottom broken down

@@ -9,7 +9,7 @@ class Navbar extends Component {
 
 			<nav>
 				<Link to = "/" className = "home_link">
-					<i class="fas fa-home"></i>
+					<i className="fas fa-home"></i>
 					Home
 				</Link>
 				<Link to = "/students">Students</Link>
