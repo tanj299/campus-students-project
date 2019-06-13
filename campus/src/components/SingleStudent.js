@@ -22,17 +22,7 @@ class SingleStudent extends Component {
 	}
 
 	componentDidMount () {
-
-		for (let i = 0; i < rawData.length; i++) {
-			
-			if (rawData[i].id == this.props.match.params.id) {
-				this.setState({
-					data: rawData[i]
-				});
-
-				return;
-			}
-		}
+		
 	}
 
 	render () {
