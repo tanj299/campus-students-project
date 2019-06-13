@@ -1,28 +1,20 @@
+
 const router = require("express").Router();
-
-const {Student,Campus}=require('../database/models');
-
-//dummy data
- //const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
-
+const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
+const cors = require('cors')
 //route to serve all students
-router.get('/', async(req, res, next) => {
-  Student.findAll()
-  .then(students=>res.json(students))
-  .catch(next)
-});
+router.get("/", cors(), (req, res, next) => {
+  // res.json("ALL OF THE STUDENTS!!!");
+  res.json(students)
+})
 
 //routes to serve single student and/or
 router.get("/:id", (req, res,next) => {
-  console.log("particular student");
-  Student.findById(req.params.id)
-  .then(Student=>res.json(students))
-  .catch(next)
-});
+  res.json("A PARTICULAR STUDENT");
+})
 
  //routes to add a new student
 router.post("/",(req,res)=>{
-  //var id=req.body.id;
   res.json(" add a new student")
 });
 
