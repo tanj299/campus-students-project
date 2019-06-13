@@ -11,8 +11,6 @@ const REMOVE_STUDENT = 'REMOVE_STUDENT';
 // the student parameter is passed as an argument from the axios call, data => dispatch(fetchStudent(data[0]))
 // we need to setup a proxy in our package.json in our front end in order to imitate the fact that we're making this requst from the a separate server 
 // with a proxy, it is as if the front-end and back-end is running on the same server 
-
-// this sends data from api to reducer 
 const fetchAllStudents = (student) => {
     return {
         type: FETCH_ALL_STUDENT,

@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 // import { fetchStudentThunk } from '../components/store/utilities/Student';
 // import { removeStudentThunk } from '../components/store/utilities/Student';
 // import { connect } from 'react-redux';
 // import axios from 'axios';
+=======
+import { fetchStudentThunk } from '../components/store/utilities/Student';
+import { removeStudentThunk } from '../components/store/utilities/Student';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+>>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
 import React, { Component, Fragment } from 'react';
 
 let rawData = [
@@ -44,18 +52,27 @@ class SingleStudent extends Component {
 	}
 
 	render () {
+<<<<<<< HEAD
 		// const student = this.props.data || 'NO student'
+=======
+>>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
 
 		return (
 			<div>
 				{ (this.state.data != null) ? (
-					<Fragment>
+					<div className = "single_item_wrapper">
 						<h1>{this.state.data.firstName + " " + this.state.data.lastName}</h1>
 
-						<p className = "email">{this.state.data.email}</p>
+						<div className = "details">
+							<p className = "email">Email Address: {this.state.data.email}</p>
+							<p className = "gpa">GPA: {this.state.data.gpa}</p>
+						</div>
 
-						<p className = "gpa">{this.state.data.gpa}</p>
-					</Fragment>) :
+						<div className = "btn_controls_single">
+							<Link to = {'/edit/student/' + this.state.data.id } className = "btn_link">Edit</Link>
+							<button className = "btn_link delete">Delete</button>
+						</div>
+					</div>) :
 					(
 						<p className = "error">There was an error.</p>
 					)

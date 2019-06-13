@@ -24,6 +24,8 @@ class EditCampus extends Component {
 			name: "",
 			address: "",
 
+			displayErrorMessage: false
+
 		}
 
 		this.submitData = this.submitData.bind(this);
@@ -38,6 +40,16 @@ class EditCampus extends Component {
 
 	submitData (e) {
 		e.preventDefault();
+
+		if (this.state.name.length < 1 
+			|| this.state.address.length < 1) {
+
+			this.setState({
+				displayErrorMessage: true
+			});
+
+			return;
+		}
 
 		axios.post("/edit/campus/" + this.state.id)
 			.then((res) => {
@@ -90,7 +102,14 @@ class EditCampus extends Component {
 							<input type = "text" name = "address" value = { this.state.address } onChange = {this.handleInputChange} />
 						</div>
 
-						<div className = "btn_controls_wrapper">
+						<div className = "btn_controls_wrapper sm">
+							{ (this.state.displayErrorMessage) 
+								&& (
+								<p className = "error_sm">
+									Please Fill All Fields
+								</p>
+								) 
+							}
 							<input type = "submit" onClick = { this.submitData } className = "btn_link" />
 						</div>
 					</div>

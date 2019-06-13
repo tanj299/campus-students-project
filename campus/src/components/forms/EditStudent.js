@@ -52,6 +52,18 @@ class EditStudent extends Component {
 
 	submitData (e) {
 
+		if (this.state.firstName.length < 1 
+			|| this.state.lastName.length < 1 
+			|| this.state.email.length < 1
+			|| this.state.gpa.length < 1) {
+
+			this.setState({
+				displayErrorMessage: true
+			});
+
+			return;
+		}
+
 		let t = [...this.state.rawData];
 
 		t[this.state.index] = {
@@ -77,7 +89,8 @@ class EditStudent extends Component {
 	}
 
 	componentDidMount () {
-
+		
+		// FOR TESTING. REMOVE BEFORE PROJECT COMPLETION.
 		for (let i = 0; i < this.state.rawData.length; i++) {
 
 			if (this.state.rawData[i].id === this.props.match.params.id) {
@@ -99,6 +112,8 @@ class EditStudent extends Component {
 
 		}
 
+		// UNCOMMENT BELOW CODE ONCE READY TO IMPLEMENT AXIOS CODE
+		//
 		// axios.get('/student/' + this.props.match.params.id)
 		// 	.then( (res) => {
 		// 		this.setState({
@@ -146,7 +161,14 @@ class EditStudent extends Component {
 						<input type = "text" name = "gpa" value = {this.state.gpa} onChange = {this.handleInputChange} />
 					</div>
 
-					<div className = "btn_controls_wrapper">
+					<div className = "btn_controls_wrapper sm">
+						{ (this.state.displayErrorMessage) 
+							&& (
+							<p className = "error_sm">
+								Please Fill All Fields
+							</p>
+							) 
+						}
 						<input type = "submit" className = "btn_link" onClick = { this.submitData } value = "Save Changes" />
 					</div>
 				</div>

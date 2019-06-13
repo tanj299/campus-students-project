@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchAllStudentsThunk, addNewStudentThunk, removeStudentThunk } from '../components/store/utilities/Student';
 
-
 class AllStudents extends Component {
 
 	constructor (props) {
@@ -18,25 +17,6 @@ class AllStudents extends Component {
 
 		}
 	}
-
-	// componentDidMount () {
-
-	// 	axios.get("/students/all")
-	// 		.then( (response) => {
-
-	// 			this.setState({
-	// 				data: response.data,
-	// 				displayErrorMessage: false
-	// 			});
-
-	// 		})
-	// 		.catch( (err) => {
-
-	// 			this.setState({ displayErrorMessage: true })
-
-	// 		});
-
-	// }
 	
 	componentDidMount() {
 		this.props.fetchAllStudents()
@@ -47,7 +27,7 @@ class AllStudents extends Component {
 	}
 
 	render () {
-		console.log("render method", this.props.allStudents);
+
 		return (
 
 			<div className = "all_students list_all">
@@ -71,7 +51,7 @@ class AllStudents extends Component {
 // the keys of these objects will be available on our props now 
 // "I want all students in this component, from my redux store"
 const mapStateToProps = (state) => {
-	console.log('The store', state)
+	console.log(state)
 	return {
 		// allStudents expects from my reducer, an allStudents object, which we then call state.allStudents 
 		// and now the first allStudents will "become" state.allStudents
