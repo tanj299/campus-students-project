@@ -14,6 +14,25 @@ let rawData = [{
 	address: "66 5th Ave, New York, NY 10011"
 }];
 
+let rawDataStudents = [
+	{ 
+		id: 1, 
+		firstName: 'John', 
+		lastName: 'Smith', 
+		email: 'jsmith@gmail.com',
+		gpa: '3.5',
+		campusID: 1
+	},
+	{ 
+		id: 2, 
+		firstName: 'Bob', 
+		lastName: 'Sponge', 
+		email: 'spongeb@gmail.com',
+		gpa: '1.000',
+		campusID: 1
+	}
+];
+
 class SingleCampus extends Component {
 
 	constructor (props) {
@@ -23,6 +42,7 @@ class SingleCampus extends Component {
 		this.state = {
 
 			data: undefined,
+			studentData: undefined,
 			campus: props.campusInfo
 
 		}

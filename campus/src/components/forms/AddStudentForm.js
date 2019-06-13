@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNewStudentThunk } from '../store/utilities/Student'
-// import axios from 'axios';
-// import { allStudents } from '../../reducers';
 
 class AddStudentForm extends Component {
 

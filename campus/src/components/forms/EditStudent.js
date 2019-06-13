@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-// import StudentList from './../partials/StudentList';
+import { Link } from 'react-router-dom';
 
 class EditStudent extends Component {
 
@@ -93,7 +92,7 @@ class EditStudent extends Component {
 		// FOR TESTING. REMOVE BEFORE PROJECT COMPLETION.
 		for (let i = 0; i < this.state.rawData.length; i++) {
 
-			if (this.state.rawData[i].id === this.props.match.params.id) {
+			if (this.state.rawData[i].id == this.props.match.params.id) {
 
 				this.setState({
 					isFound: true,
@@ -170,6 +169,7 @@ class EditStudent extends Component {
 							) 
 						}
 						<input type = "submit" className = "btn_link" onClick = { this.submitData } value = "Save Changes" />
+						<Link to = {"/student/" + this.state.id} className = "btn_link cancel">Cancel</Link>
 					</div>
 				</div>
 

@@ -36,7 +36,7 @@ class AllStudents extends Component {
 				</div>
 
 				<div className = "large_list">
-					{/* <div>this.props.allStudents.map(() => )</div> */}
+
 					<StudentList studentList = { this.props.allStudents } />
 						
 				</div>
