@@ -10,8 +10,6 @@ const REMOVE_STUDENT = 'REMOVE_STUDENT';
 // the student parameter is passed as an argument from the axios call, data => dispatch(fetchStudent(data[0]))
 // we need to setup a proxy in our package.json in our front end in order to imitate the fact that we're making this requst from the a separate server 
 // with a proxy, it is as if the front-end and back-end is running on the same server 
-
-// this sends data from api to reducer 
 const fetchAllStudents = (student) => {
     return {
         type: FETCH_STUDENT,
@@ -19,10 +17,9 @@ const fetchAllStudents = (student) => {
     }
 }
 
-const removeStudent = (student) => {
+const removeStudent = () => {
     return {
         type: REMOVE_STUDENT,
-        payload: student
     }
 }
 
@@ -38,11 +35,7 @@ export const fetchStudentThunk = () => (dispatch) => {
 } 
 
 export const removeStudentThunk = () => (dispatch) => {
-    return axios 
-        .get("/api/students")
-        .then(response => response.data)
-        .then(data => dispatch(removeStudent(data)))
-        .catch(err => console.log(err));
+    return dispatch(removeStudent());
 }
 
 // ************************************ REDUCER  ************************************
@@ -57,8 +50,7 @@ export default (state=[], action) => {
             // --> back to THUNK CREATORS and new data, which is the payload, is dispatched in dispatch()
             return action.payload; 
         case REMOVE_STUDENT:
-            // returns all students except that one student, whether it's by id or whatnot, you can use splice 
-            return action.payload;
+            return {};
         default:
             return state; 
     }

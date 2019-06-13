@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 import CampusList from './partials/CampusList';
 import { fetchAllCampusThunk, removeCampusThunk } from '../components/store/utilities/Campus'
 
@@ -12,8 +12,7 @@ class AllCampus extends Component {
 		super(props);
 
 		this.state = {
-
-			data: [{
+			data: [/*{
 				id: 1,
 				name: "Hunter College",
 				address: "695 Park Ave, New York, NY 10065"
@@ -21,16 +20,16 @@ class AllCampus extends Component {
 				id: 2,
 				name: "Parsons School of Design",
 				address: "66 5th Ave, New York, NY 10011"
-			}]
+			}*/]
 
 		}
 
 	}
 
-	componentDidMount () { 
-		this.props.fetchAllCampus();
-		console.log(this.props.fetchAllCampus);
-	}
+	 async componentDidMount () {
+	 	const {data}=await axios.get('http://localhost:3001/campus')
+	 	this.setState({data})
+	 	}
 
 	// 	axios.get("/campuses/all")
 	// 		.then( (response) => {
