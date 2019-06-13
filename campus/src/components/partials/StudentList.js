@@ -19,22 +19,40 @@ function StudentInfo ({ studentData }) {
 
 class StudentList extends Component {
 
-	// constructor (props) {
+	constructor (props) {
 
-	// 	super(props);
+		super(props);
 
-	// 	// this.state = {
+		this.state = {
 
-	// 	// 	data: props.studentList,
-	// 	// 	displayErrorMessage: false
+			data: props.studentList,
+			displayErrorMessage: false,
+			
+			searchTerm: ""
+		}
 
-	// 	// }
+		this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
+	}
 
-	// }
+	handleSearchTermChange (e) {
+
+		this.setState({
+			searchTerm: e.target.value
+		});
+
+	}
 
 	render () {
-		console.log("error here", this.props.studentList)
-		let student_list = this.props.studentList.map( (s, i) => {
+
+		let student_list = this.props.studentList.filter((c, i) => {
+			if (this.state.searchTerm.length > 3) {
+				let fullName = c.firstName + " " + c.lastName;
+				
+				return (fullName.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1);
+			}
+			else
+				return true
+		}).map( (s, i) => {
 			return (
 				<li className = "item_sm" key = { s.id } >
                     <Link to = { '/student/' + s.id }>
@@ -47,11 +65,30 @@ class StudentList extends Component {
 			);
         });
 
-        let toRender = ( <ul className = "item_list">
-                { student_list }
-            </ul> );
+        let toRender = ( 
 
-        if (student_list.length < 1) {
+			<div>
+				<div className = "searchbar input_wrapper">
+					<label>
+						Search
+					</label>
+					<input type = "text" value={this.state.searchTerm} onChange = { this.handleSearchTermChange } />
+				</div>
+
+				{ (student_list.length > 0) ? (
+					<ul className = "item_list">
+						{ student_list }
+					</ul>
+				) : (
+					<p className = "error">
+						No Students Found
+					</p>
+				) }
+			</div>
+
+		);
+
+        if (this.props.studentList.length < 1) {
             toRender = (
                 <p className = "error">
                     0 Students

@@ -13,7 +13,6 @@ class AddStudentForm extends Component {
 			firstName: "",
 			lastName: "",
 			email: "",
-
 			displayErrorMessage: false
 
 		}

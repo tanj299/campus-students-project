@@ -1,19 +1,9 @@
 import { fetchStudentThunk } from '../components/store/utilities/Student';
 import { removeStudentThunk } from '../components/store/utilities/Student';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
-let rawData = [
-	{ 
-		id: 1, 
-		firstName: 'John', 
-		lastName: 'Smith', 
-		email: 'jsmith@gmail.com',
-		gpa: '3.5'
-	}
-];
 
 class SingleStudent extends Component {
 
@@ -31,22 +21,10 @@ class SingleStudent extends Component {
 	}
 
 	componentDidMount () {
-		console.log(this.props.match.params.id)
 		this.props.fetchStudent(this.props.match.params.id);
-		// for (let i = 0; i < rawData.length; i++) {
-			
-		// 	if (rawData[i].id === this.props.match.params.id) {
-		// 		this.setState({
-		// 			data: rawData[i]
-		// 		});
-
-		// 		return;
-		// 	}
-		// }
 	}
 
 	render () {
-		// const student = this.props.data || 'NO student'
 
 		return (
 			<div>

@@ -1,6 +1,9 @@
 
 const router = require("express").Router();
-const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {id: 2, firstName: "Eren", lastName: "Jaeger", email: "snk@example.com"}]
+const {Student} = require('../database/models');
+
+
+//const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {id: 1, firstName: "Eren", lastName: "Jaeger", email: "thechosenone@example.com"}]
 const cors = require('cors')
 //route to serve all students
 
@@ -16,13 +19,26 @@ router.get("/", cors(), async(req, res, next) => {
 });
 
 //routes to serve single student and/or
-router.get("/:id", (req, res,next) => {
-  res.json({ id: 1, firstName: "Albert", lastName: "Albertson", email: "al@example.com", gpa: "3.7" })
-  // res.json("A PARTICULAR STUDENT");
-})
+router.get("/:id", async(req,res,next)=>{
+  try{
+      
+      let student = await Student.findByPk(req.params.id);
+      
+      if(student){
+        res.json(student);
+      }
+      else{
+        res.status(404).send('Campus not found');
+      }
+
+}
+  catch(error){
+      next(error);
+  }
+});
 
  //routes to add a new student
-router.post("/",async(req,res,next)=>{
+router.post("/:id",async(req,res,next)=>{
   //res.json(" add a new student")
   try{
     let student=await Student.create(req.body);

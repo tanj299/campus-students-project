@@ -1,24 +1,23 @@
+const {Campus}=require('../database');
+
 const campuses=[
-    {
-        id: 1,
+    Campus.create({
         name: "Hunter College",
         address: "695 Park Ave, New York, NY 10065",
-        imageUrl:"",
+        imageUrl:" ",
         description:" ",
-        },
-        {   
-        id: 2,
+        }),
+        Campus.create({   
         name: "Parsons School of Design",
         address: "66 5th Ave, New York, NY 10011",
         imageUrl:"",
         description:" ",
-        },
-        {
-        id:3,
+        }),
+        Campus.create({
         name:"LaGuardia Community College",
         address:" 31-10 Thomson Ave, LIC, NY 11101",
         imageUrl:"",
         description:" ",
-        }
+        })
     ]
     module.exports=campuses;

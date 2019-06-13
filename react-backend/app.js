@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
-//const apiRouter = require("./routes");
 const path = require('path');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -12,12 +11,7 @@ const studentRouter=require("./routes/students");
 const campusRouter=require("./routes/campuses");
 const PORT=5000;
 
-// app.use("/api", apiRouter);
-// console.log(Router);
 app.use(cors())
-
-app.use('/api/students',studentRouter)
-app.use('/api/campuses', campusRouter);
 
 app.listen(PORT, () => {
   console.log(`Server runnin on ${PORT}`);
@@ -26,20 +20,18 @@ app.listen(PORT, () => {
 //Utilities
 const createLocalDatabase = require('./utilities/createLocalDatabase.js');
 
-//const seedDatabase=require('./utilities/seedDatabase.js');
-// //our database instance;
- const db=require('./database');
-
+ //our database instance;
+ const {db}=require('./database');
 
 //A helper function to sync our database;
 const syncDatabase = () => {
   if (process.env.NODE_ENV === 'production') {
     db.sync();
-   // seedDatabase();
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
-    db.sync({ force: true })
+    
+    db.sync()
       .catch(err => {
         if (err.name === 'SequelizeConnectionError') {
           createLocalDatabase();
@@ -49,7 +41,8 @@ const syncDatabase = () => {
         }
       });
     }
-}; 
+};
+ 
 // A helper function to create our app with configurations and middleware;
 const configureApp = () => {
   app.use(helmet());
@@ -59,6 +52,10 @@ const configureApp = () => {
   app.use(compression());
   app.use(cookieParser());
 }
+
+app.use('/api/students',studentRouter)
+app.use('/api/campuses', campusRouter);
+
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {
   if (path.extname(req.path).length) {
@@ -85,3 +82,5 @@ const bootApp = async () => {
 };
 // Main function invocation;
 bootApp();
+
+//module.exports=app;
