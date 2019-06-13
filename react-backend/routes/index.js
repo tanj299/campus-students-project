@@ -1,23 +1,26 @@
-// var express = require('express');
-// var router = express.Router();
-
 const router=require("express").Router();
+//const {Campus,Student} = require('../database/models');
+
+//subroutes;
 const studentRouter=require("./students");
-const campusesRouter=require("./campuses");
+const campusRouter=require("./campuses");
 
-// const studentRouter=require("./singleStudent");
-// const campusesRouter=require("./singleCampus");
-
-/* GET home page. */
- router.get('/', function(req, res, next) {
- res.render('index', { title: 'Express' });
-});
-
-router.use("/students",studentRouter);
-router.use("/campus",campusesRouter);
-
-// router.use("/singleStudent",studentRouter);
-// router.use("/singleCampus",campusRouter);
+//mount our subrouteres to assemble our apiRouter
+router.use('/students',studentRouter);
+router.use('/campuses',campusRouter);
 
 
+// /* GET home page. */
+// //when GET request made to home page
+// router.get('/',function(req,res,next){
+//    res.send({express: "Home"});
+// })
+
+// Error handling middleware;
+router.use((req, res, next) => {
+    const error = new Error("Not Found, Please Check URL!");
+    error.status = 404;
+    next(error);
+  });
+  
 module.exports = router;
