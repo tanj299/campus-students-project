@@ -1,0 +1,8 @@
+AllStudents makes an API request (which IS my store) for allStudents
+Array gets passed from AllStudents into StudentList 
+StudentList maps the array and has individual cards with student info 
+
+
+Single Student gets the id from the URL bar, makes another API request from the store to the backend with that id 
+Gets back single object which is the student 
+Updates the state with that single student on the single student key 

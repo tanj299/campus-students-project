@@ -3,10 +3,19 @@ import axios from 'axios';
 // let initialState = {};
 
 // ************************************ ACTION TYPES ************************************
-const FETCH_ALL_CAMPUS= "FETCH_CAMPUS";
+const FETCH_CAMPUS = "FETCH_CAMPUS"
+const FETCH_ALL_CAMPUS = "FETCH_ALL_CAMPUS";
+const ADD_CAMPUS = "ADD_CAMPUS";
 const REMOVE_CAMPUS = "REMOVE_CAMPUS";
 
 // ************************************ ACTION CREATORS ************************************
+const fetchCampus = (campus) => {
+    return {
+        type: FETCH_CAMPUS,
+        payload: campus 
+    }
+}
+
 const fetchAllCampus = (campus) => {
     return {
         type: FETCH_ALL_CAMPUS,
@@ -14,31 +23,30 @@ const fetchAllCampus = (campus) => {
     }
 }
 
-const removeCampus = () => {
+const removeCampus = (campus) => {
     return {
         type: REMOVE_CAMPUS,
+        payload: campus
     }
 }
 
 // ************************************ THUNK CREATORS ************************************
-export const fetchAllCampusThunk = () => (dispatch) => {
-    // return axios
-    //     // instead of writing the backend path, our proxy takes care of that for us 
-    //     // in ./package.json in the last line 
-    //     .get("/api/campuses")
-    //     .then(response => response.data)
-    //     .then(data => dispatch(fetchAllCampus(data)))
-    //     .catch(err => console.log(err));
+export const fetchCampusThunk = (id) => (dispatch) => {
+    return axios
+        .get("/api/campuses/" + id)
+        .then(response => response.data)
+        .then(data => dispatch(fetchCampus(data)))
+        .catch(err => console.log(err));
+} 
 
-    return dispatch(fetchAllCampus([{
-        id: 1,
-        name: "Hunter College",
-        address: "695 Park Ave, New York, NY 10065"
-    },{
-        id: 2,
-        name: "Parsons School of Design",
-        address: "66 5th Ave, New York, NY 10011"
-    }]));
+export const fetchAllCampusThunk = () => (dispatch) => {
+    return axios
+        // instead of writing the backend path, our proxy takes care of that for us 
+        // in ./package.json in the last line 
+        .get("/api/campuses")
+        .then(response => response.data)
+        .then(data => dispatch(fetchAllCampus(data)))
+        .catch(err => console.log(err));
 }
 
 export const removeCampusThunk = () => (dispatch) => {
@@ -46,10 +54,18 @@ export const removeCampusThunk = () => (dispatch) => {
 }
 
 // ************************************ REDUCER ************************************
-export default (state = [], action) => {
+export default (state = {campus: [], singleCampus: {}}, action) => {
     switch (action.type) {
+        case FETCH_CAMPUS: 
+            return {
+                ...state, singleCampus: action.payload
+            } 
         case FETCH_ALL_CAMPUS:
-            return action.payload;
+            return {
+                ...state, campus: action.payload
+            }
+        case ADD_CAMPUS: 
+            return {};
         case REMOVE_CAMPUS:
             return {};
         default:

@@ -19,17 +19,21 @@ router.get("/", cors(), async(req, res, next) => {
 });
 
 //routes to serve single student and/or
-router.get("/:id", async(req, res,next) => {
-  //res.json("A PARTICULAR STUDENT");
+router.get("/:id", async(req,res,next)=>{
   try{
-  let student=await Student.findById(req.params.id);
-  if(student){
-    res.json(student);
-  }else{
-    res.status(404).send('Student not found');
-  }
-}catch(error){
-    next(error);
+      
+      let student = await Student.findByPk(req.params.id);
+      
+      if(student){
+        res.json(student);
+      }
+      else{
+        res.status(404).send('Campus not found');
+      }
+
+}
+  catch(error){
+      next(error);
   }
 });
 

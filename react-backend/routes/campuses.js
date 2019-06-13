@@ -2,7 +2,6 @@
 const router=require('express').Router();
 
 const {Campus} = require('../database/models');
-//const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}]
 const cors = require('cors')
 
 //route to serve all campuses
@@ -13,13 +12,13 @@ router.get("/", cors(), async(req,res,next)=>{
     }catch(error){
         next(error);
     }
-   // res.json(campuses);
 });
 
 //routes to serve single campus
 router.get("/:id", async(req,res,next)=>{
+    
     try{
-        let campus=Campus.findById(req.params.id);
+        let campus= await Campus.findByPk(req.params.id);
     if(campus){
         res.json(campus);
     }

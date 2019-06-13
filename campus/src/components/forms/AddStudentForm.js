@@ -29,18 +29,7 @@ class AddStudentForm extends Component {
 
 	submitData (e) {
 		e.preventDefault();
-
-		if (this.state.firstName.length < 1 
-			|| this.state.lastName.length < 1 
-			|| this.state.email.length < 1) {
-
-				this.setState({
-					displayErrorMessage: true
-				});
-
-				return;
-			}
-
+		this.props.newStudent(this.state);
 		// axios.post('/add/campus', { firstName: this.state.firstName, lastName: this.state.lastName })
 		// 	.then( (res) => {
 		// 		console.log(res);

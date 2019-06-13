@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
-let rawData = [{
-	id: 1,
-	name: "Hunter College",
-	address: "695 Park Ave, New York, NY 10065",
-	description: 'foo'
-},{
-	id: 2,
-	name: "Parsons School of Design",
-	address: "66 5th Ave, New York, NY 10011",
-	description: 'bar'
-}];
+import { fetchCampusThunk } from '../../components/store/utilities/Campus';
+import { connect } from 'react-redux';
 
 class EditCampus extends Component {
 
@@ -21,11 +10,13 @@ class EditCampus extends Component {
 
 		this.state = {
 
-			isFound: false,
-			id: "",
-			name: "",
-			address: "",
-			description: "",
+			isFound: true,
+
+			id: props.currentCampus.id,
+
+			name: props.currentCampus.name,
+			address: props.currentCampus.address,
+			description: props.currentCampus.description,
 
 			displayErrorMessage: false
 
@@ -42,8 +33,9 @@ class EditCampus extends Component {
 	}
 
 	submitData (e) {
-		e.preventDefault();
 
+		e.preventDefault();
+		console.log(this.state.name)
 		if (this.state.name.length < 1 
 			|| this.state.address.length < 1) {
 
@@ -53,41 +45,14 @@ class EditCampus extends Component {
 
 			return;
 		}
-
-		axios.post("/edit/campus/" + this.state.id)
-			.then((res) => {
-				console.log("Success");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
 	}
 
 	componentDidMount () {
-
-		for (let i = 0; i < rawData.length; i++) {
-			
-			console.log(rawData[i].id);
-
-			if (rawData[i].id == this.props.match.params.id) {
-
-				this.setState({
-					isFound: true,
-					id: rawData[i].id,
-					name: rawData[i].name,
-					address: rawData[i].address,
-					description: rawData[i].description
-				});
-
-				return;
-			}
-
-		}
+		console.log(this.props.currentCampus.id)
+		this.props.fetchCampus(this.props.match.params.id);
 	}
 
 	render () {
-
-		console.log(this.state.isFound);
 
 		return (
 			<div className = "editForm-wrapper">
@@ -133,4 +98,15 @@ class EditCampus extends Component {
 
 }
 
-export default EditCampus;
+const mapStateToProps = (state) => {
+	return {
+		currentCampus: state.allCampus.singleCampus
+	} 
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(EditCampus);

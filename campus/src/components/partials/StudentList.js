@@ -51,7 +51,7 @@ class StudentList extends Component {
 				return (fullName.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1);
 			}
 			else
-				return c === c
+				return true
 		}).map( (s, i) => {
 			return (
 				<li className = "item_sm" key = { s.id } >

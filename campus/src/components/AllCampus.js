@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CampusList from './partials/CampusList';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import Campus, { fetchAllCampusThunk } from '../components/store/utilities/Campus'
+import { fetchAllCampusThunk } from '../components/store/utilities/Campus'
 
 class AllCampus extends Component {
 
@@ -47,7 +47,7 @@ class AllCampus extends Component {
 
 const mapStateToProps = (state) => { 
 	return { 
-		allCampus: state.allCampus
+		allCampus: state.allCampus.campus
 	}
 }
 
