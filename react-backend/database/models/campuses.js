@@ -6,14 +6,24 @@ const campuses=db.define("campuses",{
         type:Sequelize.INTEGER,
         unique:true,
         allowNull:false,
+        validate:{
+            notEmpty: true
+        }
     },
     name:{
         type:Sequelize.STRING,
+        unique:true,
         allowNull:false,
+        validate:{
+            notEmpty: true
+        }
     },
     address:{
         type:Sequelize.STRING,
-        allowNull:false
+        allowNull:false,
+        validate:{
+            notEmpty: true
+        }
     },
     imageUrl:{
         type:Sequelize.STRING,
@@ -22,7 +32,7 @@ const campuses=db.define("campuses",{
     },
     description:{
         type:Sequelize.TEXT,
-        allowNull:true
+        // allowNull:true
     }
 
 });

@@ -1,18 +1,7 @@
 const router = require('express').Router();
 
 //const {Campuses} = require('../database/models');
-
-// const Sequelize = require("sequelize");
-
-const campuses = [{
-        name: "Hunter College",
-        address: "695 Park Ave, New York, NY 10065"
-    },
-    {
-        name: "Parsons School of Design",
-        address: "66 5th Ave, New York, NY 10011"
-    }
-]
+//const Sequelize = require("sequelize");
 
 //route to serve all campuses
 router.get("/", (req, res, next) => {
@@ -25,14 +14,21 @@ router.get("/:id", (req, res, next) => {
 })
 
 //route to add a new campus
-router.post('/', (req, res,next) => {
-   // const currentCampus=await Campuses.build(req.body);
-    //currentCampus.setName(req.name);
-    //currentCampus.save()
-   // .then(()=>res.status(201).send('Created'))
-   // .catch(error=>next(error))
-    res.json("add a student");
-});
+// router.post('/', (req, res,next) => {
+//     try{
+//        // const name:req.body.name;
+//         //const imageUrl:req.body.imageUrl;
+//         const newCampus=await Campuses.create({
+//             name,
+//             imageUrl,
+//             address,
+//             description,
+//         });
+//         res.send(newCampus);
+//     }catch(error){
+//         next(error);
+//     }
+// });
 
 //routes to edit campus ??
 router.put("/:id", (req, res) => {

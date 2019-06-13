@@ -3,7 +3,7 @@ const router = require("express").Router();
 //const {Campuses}=require('../database/models');
 
 //dummy data
-const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
+ const students = [{firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
 //route to serve all students
 router.get('/', async(req, res, next) => {
