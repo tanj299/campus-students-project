@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import StudentList from './partials/StudentList';
+import { fetchCampusThunk } from '../components/store/utilities/Campus';
+import { connect } from 'react-redux';
+import { allCampus } from '../reducers';
+// import axios from 'axios';
 
 let rawData = [{
 	id: 1,
@@ -48,62 +50,37 @@ class SingleCampus extends Component {
 	}
 
 	componentDidMount () {
-
-		for (let i = 0; i < rawData.length; i++) {
+		console.log("my campus id: ", this.props.match.params.id)
+		this.props.fetchCampus(this.props.match.params.id);
+		// for (let i = 0; i < rawData.length; i++) {
 			
-			if (rawData[i].id == this.props.match.params.id) {
+		// 	if (rawData[i].id === this.props.match.params.id) {
+		// 		this.setState({
+		// 			data: rawData[i]
+		// 		});
 
-				let t = [];
-
-				for (let j = 0; j < rawDataStudents.length; j++) {
-
-					if (rawDataStudents[j].campusID == rawData[i].id){
-
-						t.push(rawDataStudents[j]);
-
-					}
-				}
-
-				this.setState({
-					data: rawData[i],
-					studentData: t
-				});
-
-				return;
-			}
-		}
+		// 		return;
+		// 	}
+		// }
 	}
 
 	render () {
 
 		return (
 			<div>
-				{ (this.state.data != null) ? (
-					<div className = "single_item_wrapper">
-						<h1>{this.state.data.name}</h1>
+				{ (this.props.currentCampus != null) ? (
+					<Fragment>
+						<h1>Campus Name: { this.props.currentCampus.name }</h1>
 
-						<div className = "details">
-							<p className = "address">{this.state.data.address}</p>
-						</div>
-
-						<div className = "btn_controls_single">
-							<Link to = {'/edit/campus/' + this.state.data.id } className = "btn_link">
-								<i class="fas fa-pencil-alt"></i>Edit
-							</Link>
-							<button className = "btn_link delete">
-								<i class="fas fa-trash"></i> Delete
-							</button>
-						</div>
-
-						<div className = "large_list">
-							<h1>Enrolled Students</h1>
-							<StudentList studentList = { this.state.studentData } />
-						</div>
-					</div>) :
+						<p className = "address"> Address: { this.props.currentCampus.address }</p>
+						<p className = "description"> Description: { this.props.currentCampus.description }</p>
+						
+					</Fragment>) :
 					(
 						<p className = "error">There was an error.</p>
 					)
 				}
+				{/* <p className="error"> There was an error </p> */}
 			</div>
 		)
 
@@ -111,4 +88,15 @@ class SingleCampus extends Component {
 
 }
 
-export default SingleCampus;
+const mapStateToProps = (state) => {
+	return {
+		currentCampus: state.allCampus.singleCampus
+	} 
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SingleCampus);

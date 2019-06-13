@@ -23,18 +23,18 @@ class CampusList extends Component {
 
 		super(props);
 
-		this.state = {
+		// this.state = {
 
-			data: props.campusList,
+		// 	data: props.campusList,
 
-			displayErrorMessage: false
+		// 	displayErrorMessage: false
 
-		}
+		// }
 
 	}
 
 	render () {
-
+		console.log("campus error", this.props.campusList)
 		let campus_list = this.props.campusList.map( (s, i) => {
 			return (
 				<li className = "item_sm" key = { s.id } >

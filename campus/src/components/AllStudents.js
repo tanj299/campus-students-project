@@ -31,8 +31,7 @@ class AllStudents extends Component {
 		return (
 
 			<div className = "all_students list_all">
-				<div className = "btn_controls_wrapper">
-					<div className = "counter"><i class="fas fa-user-graduate"></i> { this.props.allStudents.length }</div>
+				<div className="btn_controls_wrapper"> <p className="counter">Student Count: {this.props.allStudents.length}</p>
 					<Link className = "btn_link" to = "/add/student">Add Student</Link>
 				</div>
 
@@ -57,7 +56,7 @@ const mapStateToProps = (state) => {
 		// allStudents expects from my reducer, an allStudents object, which we then call state.allStudents 
 		// and now the first allStudents will "become" state.allStudents
 		// the "state" here is really the state of the store that we're grabbing, NOT local state from THIS component!
-		allStudents: state.allStudents,
+		allStudents: state.allStudents.students,
 		myNewKey: state.myOldKey
 	}
 }
