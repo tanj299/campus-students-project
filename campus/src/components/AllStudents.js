@@ -5,16 +5,6 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStudentThunk, removeStudentThunk } from '../components/store/utilities/Student';
 
-let rawData = [
-	{ 
-		id: 1, 
-		firstName: 'John', 
-		lastName: 'Smith', 
-		email: 'jsmith@gmail.com',
-		gpa: '3.5'
-	}
-];
-
 class AllStudents extends Component {
 
 	constructor (props) {
@@ -28,32 +18,13 @@ class AllStudents extends Component {
 
 		}
 	}
-
-	// componentDidMount () {
-
-	// 	axios.get("/students/all")
-	// 		.then( (response) => {
-
-	// 			this.setState({
-	// 				data: response.data,
-	// 				displayErrorMessage: false
-	// 			});
-
-	// 		})
-	// 		.catch( (err) => {
-
-	// 			this.setState({ displayErrorMessage: true })
-
-	// 		});
-
-	// }
 	
 	componentDidMount() {
 		this.props.fetchAllStudents()
-		// const {data} = await axios.get('http://localhost:3001/students')
-		// this.setState({data})
+
 		console.log(this.props.allStudents)
 	}
+
 	render () {
 
 		return (
@@ -64,7 +35,7 @@ class AllStudents extends Component {
 				</div>
 
 				<div className = "large_list">
-					<StudentList studentList = { this.state.data } />
+					<StudentList studentList = { this.props.allStudents } />
 				</div>
 			</div>
 		)

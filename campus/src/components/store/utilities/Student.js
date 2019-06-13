@@ -13,7 +13,7 @@ const REMOVE_STUDENT = 'REMOVE_STUDENT';
 const fetchAllStudents = (student) => {
     return {
         type: FETCH_STUDENT,
-        payload: student
+        allStudents: student
     }
 }
 
@@ -48,7 +48,7 @@ export default (state=[], action) => {
             // --> fetchStudentThunk is invoked --> grabs data and uses key, fetchAllStudents and passes the object, which is data, into fetchAllStudents
             // --> fetchAllStudents is invoked --> passed student to reducer, reducer matches up action type with action creator, and return appropriate data
             // --> back to THUNK CREATORS and new data, which is the payload, is dispatched in dispatch()
-            return action.payload; 
+            return action.allStudents; 
         case REMOVE_STUDENT:
             return {};
         default:
