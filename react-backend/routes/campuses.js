@@ -1,7 +1,7 @@
 
 const router=require('express').Router();
 
-//const {Campus} = require('../database/models');
+const {Campus} = require('../database/models');
 //const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}]
 const cors = require('cors')
 

@@ -4,11 +4,10 @@ const pgtools=require('pgtools');
 const config = {
     user: 'postgres',
     host: 'localhost',
-    port: 5432,
+    port: 5433,  
     password: process.env.LOCAL_DATABASE_PASSWORD
   };
 
-// The name of the database to create;
 //can change later, but change file name too if ..
 const databaseName = require('./databaseName');
 

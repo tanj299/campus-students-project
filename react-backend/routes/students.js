@@ -3,11 +3,12 @@ const router = require("express").Router();
 const {Student} = require('../database/models');
 
 
-const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
+//const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
 const cors = require('cors')
 //route to serve all students
-router.get("/", cors(), (req, res, next) => {
+
+router.get("/", cors(), async(req, res, next) => {
   // res.json("ALL OF THE STUDENTS!!!");
   try{
     const students=await Student.findAll();
