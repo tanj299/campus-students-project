@@ -45,7 +45,6 @@ class SingleStudent extends Component {
 	}
 
 	render () {
-
 		return (
 			<div>
 				{ (this.state.data != null) ? (
