@@ -19,21 +19,21 @@ function StudentInfo ({ studentData }) {
 
 class StudentList extends Component {
 
-	constructor (props) {
+	// constructor (props) {
 
-		super(props);
+	// 	super(props);
 
-		this.state = {
+	// 	// this.state = {
 
-			data: props.studentList,
-			displayErrorMessage: false
+	// 	// 	data: props.studentList,
+	// 	// 	displayErrorMessage: false
 
-		}
+	// 	// }
 
-	}
+	// }
 
 	render () {
-
+		console.log("error here", this.props.studentList)
 		let student_list = this.props.studentList.map( (s, i) => {
 			return (
 				<li className = "item_sm" key = { s.id } >

@@ -53,7 +53,7 @@ class AllCampus extends Component {
 		return (
 
 			<div className = "all_campuses list_all">
-				<div className = "btn_controls_wrapper">
+				<div className = "btn_controls_wrapper"> <p className="counter">Campus Count: {this.props.allCampus.length}</p>
 					<Link className = "btn_link" to = "/add/campus">Add Campus</Link>
 				</div>
 
@@ -72,7 +72,7 @@ class AllCampus extends Component {
 
 const mapStateToProps = (state) => { 
 	return { 
-		allCampus: state.allCampus
+		allCampus: state.allCampus.campus
 	}
 }
 

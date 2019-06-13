@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { fetchCampusThunk } from '../components/store/utilities/Campus';
+import { connect } from 'react-redux';
+import { allCampus } from '../reducers';
 // import axios from 'axios';
 
 let rawData = [{
@@ -27,35 +30,37 @@ class SingleCampus extends Component {
 	}
 
 	componentDidMount () {
-
-		for (let i = 0; i < rawData.length; i++) {
+		console.log("my campus id: ", this.props.match.params.id)
+		this.props.fetchCampus(this.props.match.params.id);
+		// for (let i = 0; i < rawData.length; i++) {
 			
-			if (rawData[i].id === this.props.match.params.id) {
-				this.setState({
-					data: rawData[i]
-				});
+		// 	if (rawData[i].id === this.props.match.params.id) {
+		// 		this.setState({
+		// 			data: rawData[i]
+		// 		});
 
-				return;
-			}
-		}
+		// 		return;
+		// 	}
+		// }
 	}
 
 	render () {
 
 		return (
 			<div>
-				{ (this.state.data != null) ? (
+				{ (this.props.currentCampus != null) ? (
 					<Fragment>
-						<h1>{this.state.data.name}</h1>
+						<h1>Campus Name: { this.props.currentCampus.name }</h1>
 
-						<p className = "address">{this.state.data.address}</p>
-
+						<p className = "address"> Address: { this.props.currentCampus.address }</p>
+						<p className = "description"> Description: { this.props.currentCampus.description }</p>
 						
 					</Fragment>) :
 					(
 						<p className = "error">There was an error.</p>
 					)
 				}
+				{/* <p className="error"> There was an error </p> */}
 			</div>
 		)
 
@@ -63,4 +68,15 @@ class SingleCampus extends Component {
 
 }
 
-export default SingleCampus;
+const mapStateToProps = (state) => {
+	return {
+		currentCampus: state.allCampus.singleCampus
+	} 
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SingleCampus);

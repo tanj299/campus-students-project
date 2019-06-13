@@ -1,6 +1,7 @@
 
 const router=require('express').Router();
-const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}]
+const campuses = [{ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"}, 
+                  {id: "2", name: "Garrison Regiment", address: "501 6th Ave, New York, NY 10011", description: "Military"}]
 const cors = require('cors')
 
 //route to serve all campuses
@@ -10,7 +11,8 @@ router.get("/", cors(), (req,res,next)=>{
 
 //routes to serve single campus
 router.get("/:id",(req,res,next)=>{
-    res.json("single campus");
+    // res.json("single campus");
+    res.json({ id: "1", name: "Scout Regiment", address: "695 Park Ave New York, NY 10065", description: "Military"})
 })
 
 //route to add a new campus
