@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
-//const apiRouter = require("./routes");
 const path = require('path');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -12,8 +11,6 @@ const studentRouter=require("./routes/students");
 const campusRouter=require("./routes/campuses");
 const PORT=5000;
 
-// app.use("/api", apiRouter);
-// console.log(Router);
 app.use(cors())
 
 app.listen(PORT, () => {
@@ -23,8 +20,7 @@ app.listen(PORT, () => {
 //Utilities
 const createLocalDatabase = require('./utilities/createLocalDatabase.js');
 
-// const seedDatabase=require('./utilities/seedDatabase.js');
-// //our database instance;
+ //our database instance;
  const {db}=require('./database');
 
 //A helper function to sync our database;
@@ -45,7 +41,8 @@ const syncDatabase = () => {
         }
       });
     }
-}; 
+};
+ 
 // A helper function to create our app with configurations and middleware;
 const configureApp = () => {
   app.use(helmet());

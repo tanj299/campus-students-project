@@ -2,9 +2,8 @@
 const router = require("express").Router();
 const {Student} = require('../database/models');
 
-//const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
-const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {id: 1, firstName: "Eren", lastName: "Jaeger", email: "thechosenone@example.com"}]
+//const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {id: 1, firstName: "Eren", lastName: "Jaeger", email: "thechosenone@example.com"}]
 const cors = require('cors')
 //route to serve all students
 
@@ -35,7 +34,7 @@ router.get("/:id", async(req, res,next) => {
 });
 
  //routes to add a new student
-router.post("/",async(req,res,next)=>{
+router.post("/:id",async(req,res,next)=>{
   //res.json(" add a new student")
   try{
     let student=await Student.create(req.body);

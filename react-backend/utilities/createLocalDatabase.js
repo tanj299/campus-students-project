@@ -4,7 +4,7 @@ const pgtools=require('pgtools');
 const config = {
     user: 'postgres',
     host: 'localhost',
-    port: 5433,  
+    port: 5433,  //default is 5432
     password: process.env.LOCAL_DATABASE_PASSWORD
   };
 

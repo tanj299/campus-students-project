@@ -1,11 +1,10 @@
 const {Campus}=require('../database');
 
-
 const campuses=[
     Campus.create({
         name: "Hunter College",
         address: "695 Park Ave, New York, NY 10065",
-        imageUrl:"",
+        imageUrl:" ",
         description:" ",
         }),
         Campus.create({   
