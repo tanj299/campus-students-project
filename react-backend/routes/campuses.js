@@ -1,17 +1,23 @@
 const router = require('express').Router();
 
-//const {Campuses} = require('../database/models');
+const {Campus,Student} = require('../database/models');
 //const Sequelize = require("sequelize");
 
 //route to serve all campuses
 router.get("/", (req, res, next) => {
-    res.json(campuses);
-})
+    Player.findAll()
+        .then(campuses=>res.json(campuses))
+        .catch(next)
+    //res.json(campuses);
+});
 
 //routes to serve single campus
 router.get("/:id", (req, res, next) => {
-    res.json(`${req.params.id}`); // instead of id ??
-})
+    Campus.findById(req.params.id)
+        .then(campuses=>res.json(campuses))
+        .catch(next)
+    //res.json(`${req.params.id}`); // instead of id ??
+});
 
 //route to add a new campus
 // router.post('/', (req, res,next) => {

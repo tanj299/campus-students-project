@@ -13,77 +13,79 @@ const compression = require('compression');
 var logger = require('morgan');
 
 // //Utilities
-// const createLocalDatabase = require('./utilities/createLocalDatabase');
+const createLocalDatabase = require('./utilities/createLocalDatabase');
 
 // //our database instance;
-// const db=require('./database');
+ const db=require('./database');
+ 
+ const apiRouter=require('./routes/index');
 
- const indexRouter =require("./routes/index");
- const userRouter=require("./routes/users"); //not using
- const studentRouter=require("./routes/students");
- const campusRouter=require("./routes/campuses");
+//  const indexRouter =require("./routes/index");
+//  const userRouter=require("./routes/users"); //not using
+//  const studentRouter=require("./routes/students");
+//  const campusRouter=require("./routes/campuses");
 
-// //A helper function to sync our database;
-// const syncDatabase = () => {
-//   if (process.env.NODE_ENV === 'production') {
-//     db.sync();
-//   }
-//   else {
-//     console.log('As a reminder, the forced synchronization option is on');
-//     db.sync({ force: true })
-//       .catch(err => {
-//         if (err.name === 'SequelizeConnectionError') {
-//           createLocalDatabase();
-//         }
-//         else {
-//           console.log(err);
-//         }
-//       });
-//     }
-// }; 
+//A helper function to sync our database;
+const syncDatabase = () => {
+  if (process.env.NODE_ENV === 'production') {
+    db.sync();
+  }
+  else {
+    console.log('As a reminder, the forced synchronization option is on');
+    db.sync({ force: true })
+      .catch(err => {
+        if (err.name === 'SequelizeConnectionError') {
+          createLocalDatabase();
+        }
+        else {
+          console.log(err);
+        }
+      });
+    }
+}; 
 
 //instantiate our express app
 const app = express();
 
-// // A helper function to create our app with configurations and middleware;
-// const configureApp = () => {
-//   app.use(helmet());
-//   app.use(logger('dev'));
-//   app.use(express.json());
-//   app.use(express.urlencoded({ extended: false }));
-//   app.use(compression());
-//   app.use(cookieParser());
-// }
+// A helper function to create our app with configurations and middleware;
+const configureApp = () => {
+  app.use(helmet());
+  app.use(logger('dev'));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use(compression());
+  app.use(cookieParser());
+}
 
 //Mount student and campus Router
-app.use('/', indexRouter);
-app.use('/users',userRouter);
-app.use('/students',studentRouter);
-app.use('/campuses',campusRouter);
-
+app.use('/', apiRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use((req, res, next)=> {
+  if (path.extname(req.path).length) {
+    const err = new Error('Not found');
+    err.status = 404;
+    next(err);
+  }
+  else {
+    next();
+  }
 });
 
 // error handler
-app.use(function(error, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = error.message;
-  res.locals.error = req.app.get('env') === 'development' ? error : {};
-  // render the error page
-  res.status(error.status || 500);
-  res.json('error');
+app.use((error, req, res, next) =>{
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-// // Main function declaration;
-// const bootApp = async () => {
-//   await syncDatabase();
-//   await configureApp();
-// };
-// // Main function invocation;
-// bootApp();
+// Main function declaration;
+const bootApp = async () => {
+  await syncDatabase();
+  await configureApp();
+};
+// Main function invocation;
+bootApp();
 
 const PORT=5000;
 app.listen(PORT, () => {

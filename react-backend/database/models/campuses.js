@@ -1,11 +1,12 @@
 const Sequelize=require('sequelize');
 const db=require('../db');
 
-const campuses=db.define("campuses",{
+const Campus=db.define("campuses",{
     id:{
         type:Sequelize.INTEGER,
         unique:true,
         allowNull:false,
+        primaryKey:true,
         validate:{
             notEmpty: true
         }
@@ -37,4 +38,4 @@ const campuses=db.define("campuses",{
 
 });
 
-module.exports=campuses;
+module.exports=Campus;

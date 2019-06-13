@@ -3,6 +3,6 @@
 
 const db = require('./db');
 
-//require('../database/models');
+require('../database/models');
 
 module.exports = db;

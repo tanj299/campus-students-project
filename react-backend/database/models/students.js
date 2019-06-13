@@ -1,10 +1,11 @@
 const Sequelize=require('sequelize');
 const db=require('../db');
 
-const students=db.define("students",{
+const Student=db.define("students",{
     id:{
         type:Sequelize.INTEGER,
-        allowNull:false
+        allowNull:false,
+        primaryKey:true
     },
     firstName:{
         type:Sequelize.STRING,
@@ -25,4 +26,4 @@ const students=db.define("students",{
 
 });
 
-module.exports=students;
+module.exports=Student;
