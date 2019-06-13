@@ -82,12 +82,26 @@ button {
 }
 
 .btn_controls_wrapper {
-  display: block;
+  display: flex;
   padding: 15px;
   text-align: right;
   background-color: #FFF;
   border-bottom: solid 3px #00f7ff;
   margin-bottom: 35px;
+  justify-content: flex-end;
+}
+
+.btn_controls_wrapper .counter {
+  margin: auto auto auto 0px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: #dcf8f9;
+  border-radius: 500px;
+  font-weight: bold;
+}
+
+.counter i {
+  margin-right: 5px;
 }
 
 .App {
@@ -152,19 +166,19 @@ nav {
   padding: 0px 20px;
   display: flex;
   justify-content: flex-end;
-  border-bottom: solid thin #ddd;
+  box-shadow: 0px 8px 10px -5px #ddd;
+  position: relative;
 }
 
 nav a {
   padding: 20px 8px;
   text-decoration: none;
   font-weight: bolder;
-  color: #1e1e1e;
+  color: #67678a;
   margin: 3px;
 }
 
 .list_all {
-  background-color: #dcf8f9;
   padding-bottom: 45px;
 }
 
@@ -179,7 +193,9 @@ nav a {
   text-align: center;
   background-color: #FFF;
   margin: 2.5px;
-  border-radius: 30px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0px 5px 25px -10px #aaa;
 }
 
 .item_sm .edit {
@@ -200,7 +216,6 @@ nav a {
   font-weight: bolder;
   padding-bottom: 15px;
 }
-
 
 .editForm-wrapper {
   max-width: 480px;
@@ -229,7 +244,8 @@ nav a {
 }
 
 .form input[type="text"],
-.form input[type="email"]{
+.form input[type="email"],
+.form textarea {
   border: solid 3px #91f1f5;
   padding: 12px 12px;
   display: block;
@@ -309,15 +325,77 @@ footer a {
 }
 
 .single_item_wrapper .details p {
-  background-color: #ddd;
   font-weight: bolder;
   padding: 8px 8px;
   font-size: 14px;
-  border-radius: 6px;
+  border-radius: 0px;
+  border-bottom: solid 3px #91eaea;
+  color: #035656;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.single_item_wrapper .large_list {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.single_item_wrapper .large_list .item_list {
+  justify-content: flex-start;
+  padding-top: 25px;
 }
 
 .btn_link.delete {
-  background-color: #e91e1e;
-  color: #FFF;
+  color: #e91e1e;
+  background-color: transparent;
+  margin-left: 5px;
 }
 
+.btn_controls_single i,
+.home_link i {
+  margin-right: 5px;
+}
+
+.btn_link.cancel {
+  margin-left: 5px;
+  background-color: transparent;
+  color: #333;
+}
+
+.btn_link.large {
+  color: #888;
+  background-color: transparent;
+  font-size: 25px;
+}
+
+.home-body-text div.cta_wrapper {
+  text-align: center;
+}
+
+.home-body-text {
+  padding: 105px 15px;
+  margin: auto;
+  max-width: 900px; 
+}
+
+.home-body-text h1 {
+  font-size: 35px;
+}
+
+.home-body-text div {
+  padding: 45px 15px;
+}
+
+.home-body-text p {
+  padding: 35px 0px 15px;
+  max-width: 480px;
+  line-height: 25px;
+}
+
+.home-body-text div:nth-of-type(even) {
+  text-align: right;
+}
+
+.home-body-text div:nth-of-type(even) p {
+  margin-right: 0px;
+  margin-left: auto;
+}

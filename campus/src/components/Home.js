@@ -63,7 +63,30 @@ render(){
 						Add a Campus
 					</Link>
 				</div>	
-			</section>  
+			</section> 
+			<section className = "home-body-text">
+				<div>
+					<h1>Track Student Performance</h1>
+					<p>Store and retrieve user information easily.
+						Now you can monitor performance and
+						easily access students' contact information.
+					</p>
+				</div>
+
+				<div>
+					<h1>View and add Campuses</h1>
+					<p>
+						You can add campuses and connect students to the campus
+						of their choice. Enrollment tracking is now easier than ever.
+					</p>
+				</div>
+
+				<div className = "cta_wrapper">
+					<Link to = "/add/student" className = "btn_link large">
+						Get Started <i class="fas fa-arrow-right"></i>
+					</Link>
+				</div>	
+			</section> 
 		</div>
 	)
 	}

@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-// import { fetchStudentThunk } from '../components/store/utilities/Student';
-// import { removeStudentThunk } from '../components/store/utilities/Student';
-// import { connect } from 'react-redux';
-// import axios from 'axios';
-=======
 import { fetchStudentThunk } from '../components/store/utilities/Student';
 import { removeStudentThunk } from '../components/store/utilities/Student';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
 import React, { Component, Fragment } from 'react';
 
 let rawData = [
@@ -41,7 +34,7 @@ class SingleStudent extends Component {
 
 		for (let i = 0; i < rawData.length; i++) {
 			
-			if (rawData[i].id === this.props.match.params.id) {
+			if (rawData[i].id == this.props.match.params.id) {
 				this.setState({
 					data: rawData[i]
 				});
@@ -52,11 +45,6 @@ class SingleStudent extends Component {
 	}
 
 	render () {
-<<<<<<< HEAD
-		// const student = this.props.data || 'NO student'
-=======
->>>>>>> e003e8a42d43b61e4c2580a9d8f2a12eb0966a5d
-
 		return (
 			<div>
 				{ (this.state.data != null) ? (
@@ -69,8 +57,12 @@ class SingleStudent extends Component {
 						</div>
 
 						<div className = "btn_controls_single">
-							<Link to = {'/edit/student/' + this.state.data.id } className = "btn_link">Edit</Link>
-							<button className = "btn_link delete">Delete</button>
+							<Link to = {'/edit/student/' + this.state.data.id } className = "btn_link">
+								<i class="fas fa-pencil-alt"></i>Edit
+							</Link>
+							<button className = "btn_link delete">
+								<i class="fas fa-trash"></i> Delete
+							</button>
 						</div>
 					</div>) :
 					(
