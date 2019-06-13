@@ -11,22 +11,35 @@ class AddStudentForm extends Component {
 
 			firstName: "",
 			lastName: "",
-			email: ""
+			email: "",
+
+			displayErrorMessage: false
 
 		}
 
-		this.handleNameInput = this.handleNameInput.bind(this);
-		this.submitName = this.submitName.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.submitData = this.submitData.bind(this);
 	}
 
-	handleNameInput (e) {
+	handleInputChange (e) {
 		this.setState({
 			[e.target.name]: e.target.value
 		});
 	}
 
-	submitName (e) {
+	submitData (e) {
 		e.preventDefault();
+
+		if (this.state.firstName.length < 1 
+			|| this.state.lastName.length < 1 
+			|| this.state.email.length < 1) {
+
+				this.setState({
+					displayErrorMessage: true
+				});
+
+				return;
+			}
 
 		// axios.post('/add/campus', { firstName: this.state.firstName, lastName: this.state.lastName })
 		// 	.then( (res) => {
@@ -41,23 +54,42 @@ class AddStudentForm extends Component {
 
 	render () {
 		return (
-			<div>
-				<label className = "add_item_label" htmlFor = "firstName">
-					First Name
-				</label>
-				<input type = "text" name = "firstName" onChange = { this.handleInputChange } />
+			<div className = "editForm-wrapper">
+				<h1>Add Student</h1>
 
-				<label className = "add_item_label" htmlFor = "lastName">
-					Last Name
-				</label>
-				<input type = "text" name = "lastName" onChange = { this.handleInputChange } />
+				<div className = "editForm form">
+					<div className = "input_wrapper">
+						<label className = "add_item_label" htmlFor = "firstName">
+							First Name
+						</label>
+						<input type = "text" name = "firstName" onChange = { this.handleInputChange } />
+					</div>
 
-				<label className = "add_item_label" htmlFor = "name">
-					Email
-				</label>
-				<input type = "text" name = "email" onChange = { this.handleInputChange } />
+					<div className = "input_wrapper">
+						<label className = "add_item_label" htmlFor = "lastName">
+							Last Name
+						</label>
+						<input type = "text" name = "lastName" onChange = { this.handleInputChange } />
+					</div>
 
-				<input type = "submit" onClick = { this.submitName } value = "Add+" />
+					<div className = "input_wrapper">
+						<label className = "add_item_label" htmlFor = "name">
+							Email
+						</label>
+						<input type = "text" name = "email" onChange = { this.handleInputChange } />
+					</div>
+
+					<div className = "btn_controls_wrapper sm">
+						{ (this.state.displayErrorMessage) 
+							&& (
+							<p className = "error_sm">
+								Please Fill All Fields
+							</p>
+							) 
+						}
+						<input type = "submit" onClick = { this.submitData } className = "btn_link" />
+					</div>
+				</div>
 			</div>
 
 		)
@@ -65,7 +97,6 @@ class AddStudentForm extends Component {
 	}
 
 }
-
 
 export default AddStudentForm;
 

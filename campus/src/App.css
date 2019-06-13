@@ -64,16 +64,21 @@ a, a:visited {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
 .btn_link {
   text-decoration: none;
-  padding: 15px 25px;
-  border-radius: 500px;
+  padding: 15px 24px;
+  border-radius: 6px;
   display: inline-block;
   background-color: #91f1f5;
   color: #1c6265;
   font-weight: bolder;
-  font-size: 18px;
+  font-size: 15px;
   border: none;
+  cursor: pointer;
 }
 
 .btn_controls_wrapper {
@@ -83,7 +88,6 @@ a, a:visited {
   background-color: #FFF;
   border-bottom: solid 3px #00f7ff;
   margin-bottom: 35px;
-  border-top: solid thin #ddd;
 }
 
 .App {
@@ -96,10 +100,59 @@ a, a:visited {
   flex: 1;
 }
 
+.home-header {
+  padding-top: 85px;
+  padding-bottom: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-header h1 {
+  font-size: 40px;
+  max-width: 640px;
+  padding: 15px;
+  text-align: left;
+}
+
+.home-body {
+  background: #91f1f5 url("./images/hunter-students-steps-banner.jpg") no-repeat center center;
+  background-size: cover;
+  padding: 85px;
+  text-align: center;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.home-body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #383838;
+  opacity: 0.32;
+  z-index: -1;
+}
+
+.home-body h1 {
+  color: #FFF;
+  text-shadow: 0px 0px 25px #111;
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.get-started-link-wrapper .btn_link {
+  margin-left: 5px;
+}
+
 nav {
   padding: 0px 20px;
   display: flex;
   justify-content: flex-end;
+  border-bottom: solid thin #ddd;
 }
 
 nav a {
@@ -194,11 +247,77 @@ nav a {
 }
 
 footer {
-  background-color: #ddd9ec;
+  background-color: #f3f3f3;
   padding: 35px 35px;
 }
 
 footer a {
   font-size: 18px;
   padding: 12px 8px;
+  color: #888;
 }
+
+.error {
+  background-color: #FFF;
+  border-radius: 6px;
+  padding: 25px 15px;
+  text-align: center;
+  max-width: 320px;
+  display: block;
+  margin: auto;
+  font-weight: bolder;
+  border-top: solid 6px #e91e1e;
+  box-shadow: 0px 4px 25px -10px #121212;
+}
+
+.btn_controls_wrapper.sm {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: none;
+  border-top: solid thin #DDD;
+  padding-top: 20px;
+}
+
+.error_sm {
+  color: #e91e1e;
+  margin: auto;
+}
+
+.home_link {
+  margin: auto auto auto 0px;
+}
+
+.single_item_wrapper {
+  max-width: 720px;
+  margin: 45px auto;
+  padding: 25px 15px;
+}
+
+.single_item_wrapper h1 {
+  font-size: 35px;
+}
+
+.single_item_wrapper .details {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 15px 0px;
+}
+
+.single_item_wrapper .details .email {
+  margin-right: 5px;
+}
+
+.single_item_wrapper .details p {
+  background-color: #ddd;
+  font-weight: bolder;
+  padding: 8px 8px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.btn_link.delete {
+  background-color: #e91e1e;
+  color: #FFF;
+}
+
