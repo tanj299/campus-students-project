@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNewStudentThunk } from '../store/utilities/Student'
-// import axios from 'axios';
-// import { allStudents } from '../../reducers';
 
 class AddStudentForm extends Component {
 
@@ -31,7 +29,6 @@ class AddStudentForm extends Component {
 
 	submitData (e) {
 		e.preventDefault();
-		this.props.newStudent(this.state);
 
 		if (this.state.firstName.length < 1 
 			|| this.state.lastName.length < 1 

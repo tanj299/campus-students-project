@@ -1,6 +1,5 @@
 const {Student}=require('../database');
 
-
 const students=[
     Student.create({ 
     firstName: 'John', 

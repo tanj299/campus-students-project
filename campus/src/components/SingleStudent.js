@@ -5,15 +5,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import React, { Component, Fragment } from 'react';
 
-let rawData = [
-	{ 
-		id: 1, 
-		firstName: 'John', 
-		lastName: 'Smith', 
-		email: 'jsmith@gmail.com',
-		gpa: '3.5'
-	}
-];
 
 class SingleStudent extends Component {
 

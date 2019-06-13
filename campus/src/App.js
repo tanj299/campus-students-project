@@ -31,26 +31,25 @@ function App() {
 
         <div className = "page-body">
 
-        <Switch>
+          <Switch>
 
-          <Route path = "/" exact component = { Home } />
+            <Route path = "/" exact component = { Home } />
 
-          <Route path = "/students" component = { AllStudents } />
-          <Route path = "/campuses" component = { AllCampus } />
+            <Route path = "/students" component = { AllStudents } />
+            <Route path = "/campuses" component = { AllCampus } />
 
-          <Route path = "/student/:id" component = { SingleStudent } />
-          <Route path = "/campus/:id" component = { SingleCampus } />
+            <Route path = "/student/:id" component = { SingleStudent } />
+            <Route path = "/campus/:id" component = { SingleCampus } />
 
-          <Route path = "/add/campus" component = { AddCampusForm } />
-          <Route path = "/add/student" component = { AddStudentForm } />
+            <Route path = "/add/campus" component = { AddCampusForm } />
+            <Route path = "/add/student" component = { AddStudentForm } />
 
-          <Route path = "/edit/campus/:id" component = { EditCampus } />
-          <Route path = "/edit/student/:id" component = { EditStudent } />
+            <Route path = "/edit/campus/:id" component = { EditCampus } />
+            <Route path = "/edit/student/:id" component = { EditStudent } />
 
-          <Route component = { NotFound404 } />
+            <Route component = { NotFound404 } />
 
-        </Switch>
-          
+          </Switch>
 
         </div>
 
