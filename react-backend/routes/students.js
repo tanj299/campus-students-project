@@ -2,7 +2,6 @@
 const router = require("express").Router();
 const {Student} = require('../database/models');
 
-
 //const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
 const cors = require('cors')

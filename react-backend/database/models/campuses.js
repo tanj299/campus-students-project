@@ -13,7 +13,7 @@ const Campus=db.define("campuses",{
     },
     name:{
         type:Sequelize.STRING,
-        unique:true,
+        //unique:true,
         allowNull:false,
         validate:{
             notEmpty: true
@@ -34,8 +34,10 @@ const Campus=db.define("campuses",{
     description:{
         type:Sequelize.TEXT,
         allowNull:true
-    }
-
+    },
+},
+{
+    freezeTable:true,
 });
 
 module.exports=Campus;

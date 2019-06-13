@@ -25,16 +25,17 @@ app.listen(PORT, () => {
 
 //Utilities
 const createLocalDatabase = require('./utilities/createLocalDatabase.js');
-const seedDatabase=require('./utilities/seedDatabase.js');
+
+//const seedDatabase=require('./utilities/seedDatabase.js');
 // //our database instance;
  const db=require('./database');
 
+
 //A helper function to sync our database;
 const syncDatabase = () => {
- 
   if (process.env.NODE_ENV === 'production') {
     db.sync();
-    seedDatabase();
+   // seedDatabase();
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
