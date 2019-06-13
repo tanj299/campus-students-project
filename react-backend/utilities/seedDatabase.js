@@ -1,7 +1,7 @@
 const {Student,Campus}=require('../database/models');
 
 const students=require('../data/students');
-const campuses=require('../campuses');
+const campuses=require('../data/campuses');
 
 const populateStudentTable=async(students)=>{
     for(let i=0;i<students.length;i++){

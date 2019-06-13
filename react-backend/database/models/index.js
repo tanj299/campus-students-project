@@ -34,5 +34,4 @@ Campus.hasStudent;
 module.exports={
     Student,
     Campus
-
 }

@@ -33,7 +33,7 @@ const Campus=db.define("campuses",{
     },
     description:{
         type:Sequelize.TEXT,
-        // allowNull:true
+        allowNull:true
     }
 
 });

@@ -5,23 +5,38 @@ const Student=db.define("students",{
     id:{
         type:Sequelize.INTEGER,
         allowNull:false,
-        primaryKey:true
+        primaryKey:true,
+        validate:{
+            notEmpty: true
+        }
     },
     firstName:{
         type:Sequelize.STRING,
-        allowNull:false
+        allowNull:false,
+        validate:{
+            notEmpty: true
+        }
     },
     lastName:{
         type:Sequelize.STRING,
-        allowNull:false
+        allowNull:false,
+        validate:{
+            notEmpty: true
+        }
     },
     email:{
         type:Sequelize.STRING,
-        allowNull:true
+        allowNull:true,
+        validate:{
+            notEmpty: true
+        }
     },
     gpa:{
         type:Sequelize.DECIMAL,
-        allowNull:true
+        allowNull:true,
+        validate:{
+            notEmpty: true
+        }
     }
 
 });
