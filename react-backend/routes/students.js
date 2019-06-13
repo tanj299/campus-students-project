@@ -4,6 +4,7 @@ const {Student} = require('../database/models');
 
 //const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"},]
 
+const students = [{id: 1, firstName:"Albert",lastName:"Albertson",email:"al@example.com"}, {id: 1, firstName: "Eren", lastName: "Jaeger", email: "thechosenone@example.com"}]
 const cors = require('cors')
 //route to serve all students
 

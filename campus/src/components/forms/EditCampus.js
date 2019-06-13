@@ -4,11 +4,13 @@ import axios from 'axios';
 let rawData = [{
 	id: 1,
 	name: "Hunter College",
-	address: "695 Park Ave, New York, NY 10065"
+	address: "695 Park Ave, New York, NY 10065",
+	description: 'foo'
 },{
 	id: 2,
 	name: "Parsons School of Design",
-	address: "66 5th Ave, New York, NY 10011"
+	address: "66 5th Ave, New York, NY 10011",
+	description: 'bar'
 }];
 
 class EditCampus extends Component {
@@ -23,6 +25,7 @@ class EditCampus extends Component {
 			id: "",
 			name: "",
 			address: "",
+			description: "",
 
 			displayErrorMessage: false
 
@@ -66,13 +69,14 @@ class EditCampus extends Component {
 			
 			console.log(rawData[i].id);
 
-			if (rawData[i].id === this.props.match.params.id) {
+			if (rawData[i].id == this.props.match.params.id) {
 
 				this.setState({
 					isFound: true,
 					id: rawData[i].id,
 					name: rawData[i].name,
-					address: rawData[i].address
+					address: rawData[i].address,
+					description: rawData[i].description
 				});
 
 				return;
@@ -100,6 +104,11 @@ class EditCampus extends Component {
 						<div className = "input_wrapper">
 							<label htmlFor = "address">Campus Address</label>
 							<input type = "text" name = "address" value = { this.state.address } onChange = {this.handleInputChange} />
+						</div>
+
+						<div className = "input_wrapper">
+							<label htmlFor = "description">Campus Description</label>
+							<textarea name = "description" value = { this.state.description } onChange = {this.handleInputChange}></textarea>
 						</div>
 
 						<div className = "btn_controls_wrapper sm">

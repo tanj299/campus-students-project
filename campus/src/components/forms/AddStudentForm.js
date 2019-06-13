@@ -15,7 +15,6 @@ class AddStudentForm extends Component {
 			firstName: "",
 			lastName: "",
 			email: "",
-
 			displayErrorMessage: false
 
 		}
@@ -32,6 +31,7 @@ class AddStudentForm extends Component {
 
 	submitData (e) {
 		e.preventDefault();
+		this.props.newStudent(this.state);
 
 		if (this.state.firstName.length < 1 
 			|| this.state.lastName.length < 1 
@@ -101,14 +101,13 @@ class AddStudentForm extends Component {
 
 }
 
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-// 		newStudent: (studentToPost) => dispatch(addNewStudentThunk(studentToPost))
-// 	}
-// }
+const mapDispatchToProps = (dispatch) => {
+	return {
+		newStudent: (studentToPost) => dispatch(addNewStudentThunk(studentToPost))
+	}
+}
 
-// // null is passed in since we don't use mapStateToProps
-// // we don't care about adding this component's state to the props 
-// export default connect(null, mapDispatchToProps)(AddStudentForm);
-export default AddStudentForm;
+// null is passed in since we don't use mapStateToProps
+// we don't care about adding this component's state to the props 
+export default connect(null, mapDispatchToProps)(AddStudentForm);
 

@@ -1,18 +1,17 @@
+const {Student}=require('../database');
+
+
 const students=[
-    { 
-    id: 1, 
+    Student.create({ 
     firstName: 'John', 
     lastName: 'Smith', 
     email: 'jsmith@gmail.com',
-    imageUrl:" ",
-    gpa: '3.5'
-    },
-    {
-    id:2,
-    firstName:"Albert",
-    lastName:"Albertson",
-    email:"al@example.com",
-    imageUrl:" ",
-    gpa:'2.0',
-}]
+    gpa: 3.5
+    }),
+    Student.create({
+    firstName: "Albert",
+    lastName: "Albertson",
+    email: "al@example.com",
+    gpa:2.0
+})]
 module.exports=students;

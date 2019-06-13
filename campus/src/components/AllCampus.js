@@ -54,6 +54,7 @@ class AllCampus extends Component {
 
 			<div className = "all_campuses list_all">
 				<div className = "btn_controls_wrapper">
+				<div className = "counter"><i class="fas fa-school"></i> { this.props.allCampus.length }</div>
 					<Link className = "btn_link" to = "/add/campus">Add Campus</Link>
 				</div>
 

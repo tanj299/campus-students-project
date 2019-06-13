@@ -34,7 +34,7 @@ class SingleStudent extends Component {
 
 		for (let i = 0; i < rawData.length; i++) {
 			
-			if (rawData[i].id === this.props.match.params.id) {
+			if (rawData[i].id == this.props.match.params.id) {
 				this.setState({
 					data: rawData[i]
 				});
@@ -45,7 +45,6 @@ class SingleStudent extends Component {
 	}
 
 	render () {
-		// const student = this.props.data || 'NO student'
 		return (
 			<div>
 				{ (this.state.data != null) ? (
@@ -58,8 +57,12 @@ class SingleStudent extends Component {
 						</div>
 
 						<div className = "btn_controls_single">
-							<Link to = {'/edit/student/' + this.state.data.id } className = "btn_link">Edit</Link>
-							<button className = "btn_link delete">Delete</button>
+							<Link to = {'/edit/student/' + this.state.data.id } className = "btn_link">
+								<i class="fas fa-pencil-alt"></i>Edit
+							</Link>
+							<button className = "btn_link delete">
+								<i class="fas fa-trash"></i> Delete
+							</button>
 						</div>
 					</div>) :
 					(

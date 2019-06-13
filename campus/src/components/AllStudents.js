@@ -31,12 +31,13 @@ class AllStudents extends Component {
 		return (
 
 			<div className = "all_students list_all">
-				<div className="btn_controls_wrapper"> <p className="counter">Student count: {this.props.allStudents.length}</p>
+				<div className = "btn_controls_wrapper">
+					<div className = "counter"><i class="fas fa-user-graduate"></i> { this.props.allStudents.length }</div>
 					<Link className = "btn_link" to = "/add/student">Add Student</Link>
 				</div>
 
 				<div className = "large_list">
-					{/* <div>this.props.allStudents.map(() => )</div> */}
+
 					<StudentList studentList = { this.props.allStudents } />
 						
 				</div>
