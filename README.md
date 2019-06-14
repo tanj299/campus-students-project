@@ -9,4 +9,21 @@ Group Members
 * Tommi Tsuruga
 * Topgyal Gurung
 
+#### Frontend: React-Redux
+#### Database: PostgreSQL
+#### Backend: Express
+
+# Frontend Routes
+
+/students - Student Page
+
+/campuses - Campus Page
+
+/add/student - Add Student Page
+
+/add/campus - Add Campus Page
+
+/edit/student - Edit Student Page
+
+/edit/campus - Edit Campus Page
 
